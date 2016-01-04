@@ -10,6 +10,7 @@
 namespace Slick\Template\Engine\Twig;
 
 use Slick\Common\Version;
+use Slick\I18n\TranslateMethods;
 use Zend\Http\PhpEnvironment\Request;
 
 /**

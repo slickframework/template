@@ -25,7 +25,9 @@
   "require": {
     "slick/common": "@dev",
     "twig/twig": "~v1.15",
-    "zendframework/zend-http": "^2.5"
+    "zendframework/zend-http": "^2.5",
+    "slick/configuration": "1.2.x-dev",
+    "slick/i18n": "1.0.x-dev"
   },
   "require-dev": {
     "phpunit/phpunit" : "4.*",
