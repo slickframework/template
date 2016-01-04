@@ -1,0 +1,41 @@
+{
+  "name": "slick/template",
+  "description": "Template component for Slick Framework",
+  "license": "MIT",
+  "homepage": "https://github.com/slickframework/tempalte",
+  "keywords": ["slick", "template", "twig"],
+  "version": "v1.0.5",
+  "authors": [
+    {
+      "name": "Filipe Silva",
+      "email": "silvam.filipe@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Slick\\Template\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Slick\\Tests\\Template\\": "tests"
+    }
+  },
+  "require": {
+    "slick/common": "@dev",
+    "twig/twig": "~v1.15",
+    "zendframework/zend-http": "^2.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "4.*",
+    "scrutinizer/ocular": "~1.1",
+    "behat/behat": "~3.0.4"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev",
+      "dev-develop": "1.1-dev"
+    }
+  }
+}
