@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of slick/cache package
+ * This file is part of slick/template package
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,15 +24,18 @@ class Template extends Base
      * @var string The engine to use
      */
     protected $_engine = 'Twig';
+
     /**
      * @readwrite
      * @var array Options for template initializing
      */
     protected $_options = array();
+
     /**
      * @var string[] a list of available paths
      */
     protected static $_paths = ['./'];
+
     /**
      * Prepends a searchable path to available paths list.
      *
@@ -45,6 +48,7 @@ class Template extends Base
             array_unshift(self::$_paths, $path);
         }
     }
+
     /**
      * Prepends a searchable path to available paths list.
      *
@@ -57,6 +61,7 @@ class Template extends Base
             array_push(self::$_paths, $path);
         }
     }
+
     /**
      * Initializes the engine
      *

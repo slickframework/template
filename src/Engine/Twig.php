@@ -8,14 +8,20 @@
  */
 
 namespace Slick\Template\Engine;
-use Slick\Template\EngineInterface;
 
+use Slick\Template\Engine\Twig\SlickTwigExtension;
+use Slick\Template\EngineInterface;
+use Slick\Template\Exception\ParserException;
 
 /**
  * Twig
  *
  * @package   Slick\Template\Engine
  * @author    Filipe Silva <silvam.filipe@gmail.com>
+ *
+ * @property \Twig_Environment $twig
+ *
+ * @method string getSource()
  */
 class Twig extends AbstractEngine
 {
@@ -59,9 +65,9 @@ class Twig extends AbstractEngine
     public function process($data = array())
     {
         try {
-            return $this->twig->render($this->_source, $data);
+            return $this->getTwig()->render($this->_source, $data);
         } catch (\Twig_Error $exp) {
-            throw new Exception\ParserException(
+            throw new ParserException(
                 "Error Processing Request: " . $exp->getMessage()
             );
         }
@@ -69,7 +75,7 @@ class Twig extends AbstractEngine
     /**
      * Lazy loading of twig library
      *
-     * @return \Twig_Loader_Filesystem
+     * @return \Twig_Environment
      */
     public function getTwig()
     {
