@@ -9,86 +9,225 @@
 
 namespace Slick\Template\Engine;
 
-use Slick\Template\Engine\Twig\SlickTwigExtension;
-use Slick\Template\EngineInterface;
 use Slick\Template\Exception\ParserException;
+use Slick\Template\TemplateEngineInterface;
 
 /**
  * Twig
  *
- * @package   Slick\Template\Engine
- * @author    Filipe Silva <silvam.filipe@gmail.com>
+ * @package Slick\Template\Engine
+ * @author  Filipe Silva <silvam.filipe@gmail.com>
  *
- * @property \Twig_Environment $twig
+ * @property array  $locations A list of paths for template files.
+ * @property string $cache   Absolute path for compiled templates.
+ * @property bool   $debug   Set debug mode and display the generated nodes.
+ * @property string $charset The charset used by the templates.
+ * @property string $baseTemplateClass
+ *      The base template class to use for generated templates.
+ * @property bool   $autoReload
+ *      Recompile the template whenever the source code changes.
+ * @property bool   $strictVariables
+ *      When false it silently ignore invalid variables (variables and or
+ *      attributes/methods that do not exist) and replace them with a null
+ *      value.
+ * @property bool   $autoEscape    HTML auto-escaping
+ * @property int    $optimizations
+ *      A flag that indicates which optimizations to apply (default
+ *      to -1 -- all optimizations are enabled; set it to 0 to disable).
  *
- * @method string getSource()
+ * @property \Twig_Loader_Filesystem $loader
+ * @property \Twig_Environment $twigEnvironment
+ * @property-write \Twig_Template $template
+ *
  */
 class Twig extends AbstractEngine
 {
-    /**
-     * @read
-     * @var string The template source file.
-     */
-    protected $_source;
+
     /**
      * @readwrite
-     * @var array The list of paths where to find template fields
-     * order maters.
+     * @var \Twig_Loader_Filesystem
      */
-    protected $_paths = array();
+    protected $loader;
+
+    /**
+     * @var array
+     */
+    private $optionsMap = [
+        'debug' => 'debug',
+        'autoEscape' => 'autoescape',
+        'strictVariables' => 'strict_variables',
+        'autoReload' => 'auto_reload',
+        'cache' => 'cache',
+        'baseTemplateClass' => 'base_template_class',
+        'charset' => 'charset',
+        'optimizations' => 'optimizations'
+    ];
+
     /**
      * @readwrite
-     * @var \Twig_Environment Twig engine
+     * @var \Twig_Environment
      */
-    protected $_twig;
+    protected $twigEnvironment;
+
+    /**
+     * @write
+     * @var \Twig_Template
+     */
+    protected $template;
+
+    /**
+     * @readwrite
+     * @var string|false
+     */
+    protected $cache = false;
+
+    /**
+     * @readwrite
+     * @var string
+     */
+    protected $charset = 'utf8';
+
+    /**
+     * @readwrite
+     * @var string
+     */
+    protected $baseTemplateClass = 'Twig_Template';
+
+    /**
+     * @readwrite
+     * @var bool
+     */
+    protected $autoReload = false;
+
+    /**
+     * @readwrite
+     * @var bool
+     */
+    protected $strictVariables = false;
+
+    /**
+     * @readwrite
+     * @var bool|string
+     */
+    protected $autoEscape = true;
+
+    /**
+     * @readwrite
+     * @var int
+     */
+    protected $optimizations = -1;
+
+    /**
+     * @readwrite
+     * @var bool
+     */
+    protected $debug = false;
+
+    /**
+     * @readwrite
+     * @var array
+     */
+    protected $locations = [];
+
     /**
      * Parses the source template code.
      *
      * @param string $source The template to parse
      *
-     * @return EngineInterface Returns this instance for chaining methods calls
+     * @return TemplateEngineInterface|self|$this
+     *
+     * @throws ParserException If any error occurs parsing the template
      */
     public function parse($source)
     {
-        $this->_source = $source;
+        try {
+            $this->template = $this->getTwigEnvironment()
+                ->loadTemplate($source);
+        } catch (\Exception $caught) {
+            throw new ParserException(
+                "Template parse error: ".$caught->getMessage(),
+                0,
+                $caught
+            );
+        }
         return $this;
     }
+
     /**
      * Processes the template with data to produce the final output.
      *
      * @param mixed $data The data that will be used to process the view.
-     *
-     * @throws \Slick\Template\Exception\ParserException
      *
      * @return string Returns processed output string.
      */
     public function process($data = array())
     {
         try {
-            return $this->getTwig()->render($this->_source, $data);
-        } catch (\Twig_Error $exp) {
+            return $this->template->render($data);
+        } catch (\Exception $caught) {
             throw new ParserException(
-                "Error Processing Request: " . $exp->getMessage()
+                "Template process error: ".$caught->getMessage(),
+                0,
+                $caught
             );
         }
     }
+
     /**
-     * Lazy loading of twig library
+     * Sets the list of available locations for template files.
+     *
+     * @param array $locations
+     *
+     * @return TemplateEngineInterface|self|$this
+     */
+    public function setLocations(array $locations)
+    {
+        $this->locations = $locations;
+        return $this;
+    }
+
+    /**
+     * Gets the twig environment object
      *
      * @return \Twig_Environment
      */
-    public function getTwig()
+    protected function getTwigEnvironment()
     {
-        if (is_null($this->_twig)) {
-            $this->_twig = new \Twig_Environment(
-                new \Twig_Loader_Filesystem($this->_paths),
-                [
-                    'debug' => true,
-                ]
+        if (null == $this->twigEnvironment) {
+            $this->twigEnvironment = new \Twig_Environment(
+                $this->getLoader(),
+                $this->getOptions()
             );
-            $this->_twig->addExtension(new \Twig_Extension_Debug());
-            $this->_twig->addExtension(new SlickTwigExtension());
         }
-        return $this->_twig;
+        return $this->twigEnvironment;
+    }
+
+    /**
+     * Creates a file system loader
+     *
+     * @return \Twig_Loader_Filesystem
+     */
+    protected function getLoader()
+    {
+        if (null == $this->loader) {
+            $this->loader = new \Twig_Loader_Filesystem(
+                $this->locations
+            );
+        }
+        return $this->loader;
+    }
+
+    /**
+     * Returns current configured options
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        $options = [];
+        foreach($this->optionsMap as $property => $name) {
+            $options[$name] = $this->$property;
+        }
+        return $options;
     }
 }
