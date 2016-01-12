@@ -63,7 +63,7 @@ class TwigTest extends TestCase
     public function createTwigEnvironment()
     {
         $this->engine->loader = $this->getLoaderMock();
-        $this->assertInstanceOf('\Twig_Environment', $this->engine->twigEnvironment);
+        $this->assertInstanceOf('\Twig_Environment', $this->engine->getSourceEngine());
     }
 
     /**

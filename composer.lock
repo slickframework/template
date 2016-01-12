@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f477c14d101c4e344d6a6406a5266e97",
-    "content-hash": "cc2054ef252af7a8ec17accd1b745acb",
+    "hash": "3c395bfe68754f0caf80ab7d6d66da37",
+    "content-hash": "55a2642ae17396593e7e64261e433415",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -135,12 +135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "9e45edca52cc9c954680072c93e621f8b71fab26"
+                "reference": "d8e60a5619fff77f9669da8997697443ef1a1d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/9e45edca52cc9c954680072c93e621f8b71fab26",
-                "reference": "9e45edca52cc9c954680072c93e621f8b71fab26",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d8e60a5619fff77f9669da8997697443ef1a1d7e",
+                "reference": "d8e60a5619fff77f9669da8997697443ef1a1d7e",
                 "shasum": ""
             },
             "require": {
@@ -168,12 +168,13 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2015-06-02 13:48:41"
+            "time": "2016-01-06 21:40:42"
         },
         {
             "name": "slick/common",
@@ -181,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/common.git",
-                "reference": "0a682727c442c9fe697488baec914ddf17e87dde"
+                "reference": "c89ab0f373206441cdffe53d310ad586f84391da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/common/zipball/0a682727c442c9fe697488baec914ddf17e87dde",
-                "reference": "0a682727c442c9fe697488baec914ddf17e87dde",
+                "url": "https://api.github.com/repos/slickframework/common/zipball/c89ab0f373206441cdffe53d310ad586f84391da",
+                "reference": "c89ab0f373206441cdffe53d310ad586f84391da",
                 "shasum": ""
             },
             "require": {
@@ -232,81 +233,24 @@
                 "magic methods",
                 "slick"
             ],
-            "time": "2016-01-04 15:53:18"
-        },
-        {
-            "name": "slick/configuration",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slickframework/configuration.git",
-                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/configuration/zipball/90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
-                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "slick/common": "@dev"
-            },
-            "require-dev": {
-                "behat/behat": "~3.0.4",
-                "phpunit/phpunit": "4.*",
-                "scrutinizer/ocular": "~1.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev",
-                    "dev-develop": "1.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Slick\\Configuration\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Filipe Silva",
-                    "email": "silvam.filipe@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Slick/Configuration is a simple package that deals with configuration files.",
-            "homepage": "https://github.com/slickframework/configuration",
-            "keywords": [
-                "arrays",
-                "configuration",
-                "ini",
-                "slick"
-            ],
-            "time": "2015-08-28 16:35:34"
+            "time": "2016-01-11 16:49:11"
         },
         {
             "name": "slick/i18n",
-            "version": "dev-master",
+            "version": "dev-feature/1.2.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/i18n.git",
-                "reference": "5a037b4ded48190c6607e577f755afad7ef8989a"
+                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/i18n/zipball/5a037b4ded48190c6607e577f755afad7ef8989a",
-                "reference": "5a037b4ded48190c6607e577f755afad7ef8989a",
+                "url": "https://api.github.com/repos/slickframework/i18n/zipball/b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
+                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
                 "shasum": ""
             },
             "require": {
                 "slick/common": "@dev",
-                "slick/configuration": "1.2.x-dev",
                 "zendframework/zend-i18n": ">=2.2.5",
                 "zendframework/zend-servicemanager": "2.2.5"
             },
@@ -345,7 +289,7 @@
                 "slick",
                 "translation"
             ],
-            "time": "2016-01-05 16:08:58"
+            "time": "2016-01-07 16:51:26"
         },
         {
             "name": "twig/twig",
@@ -353,12 +297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "23e47c52421999a7d02e45aa07002616a8032647"
+                "reference": "24d9266d0f1c2b4426ad8f931be30718cace4180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/23e47c52421999a7d02e45aa07002616a8032647",
-                "reference": "23e47c52421999a7d02e45aa07002616a8032647",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/24d9266d0f1c2b4426ad8f931be30718cace4180",
+                "reference": "24d9266d0f1c2b4426ad8f931be30718cace4180",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +350,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-03 15:37:06"
+            "time": "2016-01-11 14:50:45"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -820,16 +764,16 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "dev-develop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-validator.git",
-                "reference": "261bab4ae9373e01307018861b48426a35b8f37b"
+                "reference": "33f0141fce05155fb75b5d68fac5856d3a21ebd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/261bab4ae9373e01307018861b48426a35b8f37b",
-                "reference": "261bab4ae9373e01307018861b48426a35b8f37b",
+                "url": "https://api.github.com/repos/zendframework/zend-validator/zipball/33f0141fce05155fb75b5d68fac5856d3a21ebd2",
+                "reference": "33f0141fce05155fb75b5d68fac5856d3a21ebd2",
                 "shasum": ""
             },
             "require": {
@@ -882,7 +826,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2015-10-12 16:50:08"
+            "time": "2015-10-12 16:50:19"
         }
     ],
     "packages-dev": [
@@ -892,12 +836,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "ca2c78e4695ee120d44363fd8ea3b3fc28330ff7"
+                "reference": "c6dcbe4511e5881b3d62e77902bcae7b80a39ae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/ca2c78e4695ee120d44363fd8ea3b3fc28330ff7",
-                "reference": "ca2c78e4695ee120d44363fd8ea3b3fc28330ff7",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/c6dcbe4511e5881b3d62e77902bcae7b80a39ae9",
+                "reference": "c6dcbe4511e5881b3d62e77902bcae7b80a39ae9",
                 "shasum": ""
             },
             "require": {
@@ -964,7 +908,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2015-12-30 14:58:16"
+            "time": "2016-01-07 12:44:46"
         },
         {
             "name": "behat/gherkin",
@@ -1949,12 +1893,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c"
+                "reference": "539497c620125dcc0b29ef54afe02ac5d2db4a76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ea76b17bced0500a28098626b84eda12dbcf119c",
-                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/539497c620125dcc0b29ef54afe02ac5d2db4a76",
+                "reference": "539497c620125dcc0b29ef54afe02ac5d2db4a76",
                 "shasum": ""
             },
             "require": {
@@ -2013,7 +1957,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-12-12 07:45:58"
+            "time": "2016-01-12 09:08:24"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2481,6 +2425,62 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "slick/configuration",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slickframework/configuration.git",
+                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slickframework/configuration/zipball/90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
+                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "slick/common": "@dev"
+            },
+            "require-dev": {
+                "behat/behat": "~3.0.4",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev",
+                    "dev-develop": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Slick\\Configuration\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Silva",
+                    "email": "silvam.filipe@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Slick/Configuration is a simple package that deals with configuration files.",
+            "homepage": "https://github.com/slickframework/configuration",
+            "keywords": [
+                "arrays",
+                "configuration",
+                "ini",
+                "slick"
+            ],
+            "time": "2015-08-28 16:35:34"
+        },
+        {
             "name": "symfony/class-loader",
             "version": "dev-master",
             "source": {
@@ -2648,12 +2648,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "f8d66b777c95cc6deb09b8e2e127c0090019ff87"
+                "reference": "cadba4fad03e3f87086670bef0060f3320076a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/f8d66b777c95cc6deb09b8e2e127c0090019ff87",
-                "reference": "f8d66b777c95cc6deb09b8e2e127c0090019ff87",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/cadba4fad03e3f87086670bef0060f3320076a86",
+                "reference": "cadba4fad03e3f87086670bef0060f3320076a86",
                 "shasum": ""
             },
             "require": {
@@ -2699,7 +2699,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-03 15:35:40"
+            "time": "2016-01-07 13:30:25"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2767,12 +2767,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "45feeed2e8eb5c3e8cedf94b75a2503f8ae2efab"
+                "reference": "111fe092914e044b4e40410fbcd488339948ddc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/45feeed2e8eb5c3e8cedf94b75a2503f8ae2efab",
-                "reference": "45feeed2e8eb5c3e8cedf94b75a2503f8ae2efab",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/111fe092914e044b4e40410fbcd488339948ddc7",
+                "reference": "111fe092914e044b4e40410fbcd488339948ddc7",
                 "shasum": ""
             },
             "require": {
@@ -2808,7 +2808,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-03 15:35:40"
+            "time": "2016-01-07 13:39:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2875,12 +2875,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "3334c965eb19e76e8a4ad35ae7ac7df6959ba5cb"
+                "reference": "1cba8f04eb0a9e38184a8003e927a5fb2d62158a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/3334c965eb19e76e8a4ad35ae7ac7df6959ba5cb",
-                "reference": "3334c965eb19e76e8a4ad35ae7ac7df6959ba5cb",
+                "url": "https://api.github.com/repos/symfony/process/zipball/1cba8f04eb0a9e38184a8003e927a5fb2d62158a",
+                "reference": "1cba8f04eb0a9e38184a8003e927a5fb2d62158a",
                 "shasum": ""
             },
             "require": {
@@ -2916,7 +2916,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-03 15:35:40"
+            "time": "2016-01-06 10:01:46"
         },
         {
             "name": "symfony/translation",
@@ -2988,12 +2988,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "5bc31de9878863fdf5919d0944c528d31654fe3e"
+                "reference": "9db3e5a309bd5f3dfd974f5b42d820904352c4d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/5bc31de9878863fdf5919d0944c528d31654fe3e",
-                "reference": "5bc31de9878863fdf5919d0944c528d31654fe3e",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9db3e5a309bd5f3dfd974f5b42d820904352c4d8",
+                "reference": "9db3e5a309bd5f3dfd974f5b42d820904352c4d8",
                 "shasum": ""
             },
             "require": {
@@ -3029,7 +3029,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-04 14:51:32"
+            "time": "2016-01-06 10:01:46"
         }
     ],
     "aliases": [],

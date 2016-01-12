@@ -48,4 +48,11 @@ interface TemplateEngineInterface
      * @return TemplateEngineInterface|self|$this
      */
     public function setLocations(array $locations);
+
+    /**
+     * Returns the source template engine
+     *
+     * @return object
+     */
+    public function getSourceEngine();
 }

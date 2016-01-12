@@ -186,6 +186,17 @@ class Twig extends AbstractEngine
         return $this;
     }
 
+
+    /**
+     * Returns the source template engine
+     *
+     * @return \Twig_Environment
+     */
+    public function getSourceEngine()
+    {
+        return $this->getTwigEnvironment();
+    }
+
     /**
      * Gets the twig environment object
      *
