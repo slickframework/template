@@ -29,7 +29,7 @@ final class Template extends Base
 
     /** Known engine extensions */
     const EXTENSION_TWIG_TEXT = 'Slick\Template\Extension\Text';
-    const EXTENSION_TWIG_I18N = 'Slick\Template\Extension\I18N';
+    const EXTENSION_TWIG_I18N = 'Slick\Template\Extension\I18n';
 
     /** @var string Engine interface */
     private static $interface = 'Slick\Template\TemplateEngineInterface';
@@ -153,7 +153,8 @@ final class Template extends Base
     }
 
     /**
-     * @param string|EngineExtensionInterface $class
+     * @param string $class
+     * @param EngineExtensionInterface $extension
      *
      * @return EngineExtensionInterface
      */
