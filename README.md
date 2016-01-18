@@ -32,7 +32,7 @@ use Slick\Template\Template;
 
 Template::addPath('/path/to/twig/files');
 
-$twig = (new Template(['engine' => 'twig'])->initialize();
+$twig = (new Template(['engine' => Template::ENGINE_TWIG])->initialize();
 ```
 
 Basically you need to set the path (or paths) where your `.twig` files
@@ -47,15 +47,10 @@ previously configured.
 <h1>{{ post.title }}</h1>
 <p>{{ post.teaser|nl2br }}</p>
 ```
-<div class="alert alert-info" role="alert">
-    <h4>
-        <i class="fa fa-info "></i>
-        Info
-    </h4>
-    
-All documentation and API for twig can be accessed in the
-<a href="http://twig.sensiolabs.org/">Twig project home page</a>.
-</div>
+
+#### Note
+
+All documentation and API for twig can be accessed in the [Twig project home page](http://twig.sensiolabs.org/)
 
 ### Use the template
 
@@ -78,6 +73,7 @@ Output:
 <h1>Sample blog post\</h1>
 <p>Sample teaser for the blog post.\</p>
 ```
+
 
 ## Testing
 
