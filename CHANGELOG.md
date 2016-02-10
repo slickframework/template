@@ -2,7 +2,7 @@
 
 All Notable changes to `Slick/template` will be documented in this file.
 
-## 1.2.0 - xxx
+## 1.2.0 - 2015-02-10
 
 ### Added
 - Support for extensions
