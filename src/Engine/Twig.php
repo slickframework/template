@@ -209,6 +209,10 @@ class Twig extends AbstractEngine
                 $this->getLoader(),
                 $this->getOptions()
             );
+            if ($this->debug) {
+                $this->twigEnvironment
+                    ->addExtension(new \Twig_Extension_Debug());
+            }
         }
         return $this->twigEnvironment;
     }
