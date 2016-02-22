@@ -2,6 +2,11 @@
 
 All Notable changes to `Slick/template` will be documented in this file.
 
+## 1.2.1 - 2015-02-21
+
+### Added
+- Added twig debug extension when debug option is set to true.
+
 ## 1.2.0 - 2015-02-10
 
 ### Added
