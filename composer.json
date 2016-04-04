@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://github.com/slickframework/tempalte",
   "keywords": ["slick", "template", "twig"],
-  "version": "v1.2.1",
+  "version": "v1.2.2",
   "minimum-stability": "dev",
   "authors": [
     {
