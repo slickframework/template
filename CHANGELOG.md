@@ -2,6 +2,11 @@
 
 All Notable changes to `Slick/template` will be documented in this file.
 
+## 1.2.2 - 2015-04-04
+
+### Added
+- Added Template::register() method to register custom extensions.
+
 ## 1.2.1 - 2015-02-21
 
 ### Added

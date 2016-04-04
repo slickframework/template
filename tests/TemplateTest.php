@@ -97,6 +97,14 @@ class TemplateTest extends TestCase
         $extensions = array_keys($this->template->extensions);
         $this->assertTrue(in_array($className, $extensions));
     }
+    
+    public function testStaticExtensionRegister()
+    {
+        $className = 'Slick\Tests\Template\MyExtension';
+        $template = Template::register($className);
+        $extensions = array_keys($template->extensions);
+        $this->assertTrue(in_array($className, $extensions));
+    }
 
     /**
      * Should create the engine, pass the paths and apply the extensions
