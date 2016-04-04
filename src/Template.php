@@ -131,7 +131,20 @@ final class Template extends Base
 
         $this->extensions[$className] = $object;
         return $this;
+    }
 
+    /**
+     * Registers the provided class name as an extension
+     * 
+     * @param string|object $extension The class name or an instance
+     *                                 of EngineExtensionInterface interface
+     *
+     * @return Template
+     */
+    public static function register($extension)
+    {
+        $template = new static;
+        return $template->addExtension($extension);
     }
 
     /**
