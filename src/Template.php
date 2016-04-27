@@ -18,7 +18,6 @@ use ReflectionClass;
  * @package Slick\Template
  * @author  Filipe Silva <silvam.filipe@gmail.com>
  *
- * @property array $extensions
  * @property string $engine
  */
 final class Template extends Base
@@ -54,10 +53,9 @@ final class Template extends Base
     protected static $paths = ['./'];
 
     /**
-     * @readwrite
      * @var array Array containing template extensions
      */
-    protected $extensions = [
+    private static $extensions = [
         self::EXTENSION_TWIG_TEXT => null,
         self::EXTENSION_TWIG_I18N => null,
     ];
@@ -129,7 +127,7 @@ final class Template extends Base
 
         $this->checkClass($className, self::$extensionInterface);
 
-        $this->extensions[$className] = $object;
+        self::$extensions[$className] = $object;
         return $this;
     }
 
@@ -143,7 +141,7 @@ final class Template extends Base
      */
     public static function register($extension)
     {
-        $template = new static;
+        $template = new Template;
         return $template->addExtension($extension);
     }
 
@@ -156,7 +154,7 @@ final class Template extends Base
      */
     protected function applyExtensions(TemplateEngineInterface $engine)
     {
-        foreach ($this->extensions as $className => $extension) {
+        foreach (static::$extensions as $className => $extension) {
             $ext = $this->getExtension($className, $extension);
             if ($ext->appliesTo($engine)) {
                 $ext->update($engine);
@@ -204,5 +202,28 @@ final class Template extends Base
                 "Class '{$name}' does not implement {$interface}"
             );
         }
+    }
+
+    /**
+     * Get current configured extensions
+     * 
+     * @return array
+     */
+    public function getExtensions()
+    {
+        return self::$extensions;
+    }
+
+    /**
+     * Set or reset the list of extensions
+     * 
+     * @param array $extensions
+     * 
+     * @return Template
+     */
+    public function setExtensions(array $extensions)
+    {
+        self::$extensions = $extensions;
+        return $this;
     }
 }
