@@ -94,7 +94,7 @@ class TemplateTest extends TestCase
             $this->template,
             $this->template->addExtension($className)
         );
-        $extensions = array_keys($this->template->extensions);
+        $extensions = array_keys($this->template->getExtensions());
         $this->assertTrue(in_array($className, $extensions));
     }
     
@@ -117,10 +117,10 @@ class TemplateTest extends TestCase
         MyExtension::$updated = false;
         OtherExtension::$updated = false;
 
-        $this->template->extensions = [
+        $this->template->setExtensions([
             $extName => null,
             $otherExt => new OtherExtension()
-        ];
+        ]);
         $engine = $this->template->initialize();
         $this->assertTrue($engine instanceof Twig);
         $this->assertTrue(MyExtension::$updated);
