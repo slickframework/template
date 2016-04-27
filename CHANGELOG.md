@@ -2,6 +2,12 @@
 
 All Notable changes to `Slick/template` will be documented in this file.
 
+## 1.2.4 - 2015-04-27
+
+### Fixed
+- Custom extensions are now static lettings other clients to add extensions
+  making them available for all initialized template engines.
+
 ## 1.2.3 - 2015-04-04
 
 ### Added
