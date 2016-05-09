@@ -2,6 +2,11 @@
 
 All Notable changes to `Slick/template` will be documented in this file.
 
+## 1.2.5 - 2015-05-09
+
+### Added
+- Set default options to all instantiated engines on Template factory
+
 ## 1.2.4 - 2015-04-27
 
 ### Fixed
