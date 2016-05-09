@@ -138,6 +138,20 @@ class TemplateTest extends TestCase
         $this->template->initialize();
     }
 
+    public function testDefaultOptions()
+    {
+        Template::setDefaultOptions(['foo', 'bar']);
+        $this->assertEquals(['foo', 'bar'], Template::getDefaultOptions());
+        Template::setDefaultOptions([]);
+    }
+
+    public function testDefaultOption()
+    {
+        Template::setDefaultOptions('foo', 'bar');
+        $this->assertEquals(['foo' => 'bar'], Template::getDefaultOptions());
+        Template::setDefaultOptions([]);
+    }
+
 }
 
 /**

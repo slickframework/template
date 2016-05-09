@@ -10,6 +10,8 @@ namespace Template;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use PHPUnit_Framework_Assert as Assert;
 use Slick\I18n\Translator;
@@ -112,4 +114,26 @@ class TemplateContext extends \AbstractContext implements
         $expected = str_replace('\n', "\n", $expected);
         Assert::assertEquals($expected, $this->output);
     }
+
+    /**
+     * @Given /^I set default option "([^"]*)" to "([^"]*)"$/
+     * 
+     * @param string $option
+     * @param string $value
+     */
+    public function iSetDefaultOptionTo($option, $value)
+    {
+        Template::setDefaultOptions($option, $value);
+    }
+
+    /**
+     * @Then the output should contain:
+     * 
+     * @param PyStringNode $string
+     */
+    public function theOutputShouldContain(PyStringNode $string)
+    {
+        Assert::assertContains($string->getRaw(), $this->output);
+    }
+
 }
