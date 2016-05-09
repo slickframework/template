@@ -53,6 +53,11 @@ final class Template extends Base
     protected static $paths = ['./'];
 
     /**
+     * @var array Default options for template initializing
+     */
+    protected static $defaultOptions = [];
+
+    /**
      * @var array Array containing template extensions
      */
     private static $extensions = [
@@ -106,8 +111,9 @@ final class Template extends Base
     public function initialize()
     {
         $this->checkClass();
+        $options = array_merge(static::$defaultOptions, $this->options);
         /** @var TemplateEngineInterface $engine */
-        $engine = new $this->engine($this->options);
+        $engine = new $this->engine($options);
         $engine->setLocations(self::$paths);
         return $this->applyExtensions($engine);
     }
@@ -225,5 +231,39 @@ final class Template extends Base
     {
         self::$extensions = $extensions;
         return $this;
+    }
+
+    /**
+     * Set default options
+     * 
+     * If an array is given on $option parameter it should be assigned
+     * to the static $defaultOptions property.
+     * 
+     * For other values only the key provided in $option parameter should
+     * be overridden.
+     * 
+     * @param array|string|int $option
+     * 
+     * @param mixed $value
+     */
+    public static function setDefaultOptions($option, $value = null)
+    {
+        if (is_array($option) && null == $value) {
+            static::$defaultOptions = $option;
+        }
+        
+        if (is_scalar($option)) {
+            static::$defaultOptions[$option] = $value;
+        }
+    }
+
+    /**
+     * Get current default options
+     * 
+     * @return array
+     */
+    public static function getDefaultOptions()
+    {
+        return static::$defaultOptions;
     }
 }
