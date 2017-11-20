@@ -16,7 +16,6 @@ use Slick\Template\EngineExtensionInterface;
  * I18n extension for slick/template
  *
  * @package Slick\Template\Extension
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
 class I18n extends AbstractTwigExtension implements EngineExtensionInterface
 {

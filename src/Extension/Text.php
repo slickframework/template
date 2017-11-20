@@ -17,7 +17,6 @@ use Slick\Template\TemplateEngineInterface;
  * Twig text utility extension for Slick/Template
  *
  * @package Slick\Template\Extension
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
 class Text extends AbstractTwigExtension implements EngineExtensionInterface
 {

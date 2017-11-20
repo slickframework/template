@@ -5,19 +5,14 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- */
-
-namespace Slick\Template\Exception;
-
-use Slick\Template\Exception;
-
+ */%namespace_block%
 
 /**
- * Parser Exception
+ * %name%
  *
- * @package   Slick\Template\Exception
+ * @package %namespace%
  */
-class ParserException extends \RuntimeException implements Exception
+interface %name%
 {
 
 }

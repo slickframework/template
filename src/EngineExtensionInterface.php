@@ -13,7 +13,6 @@ namespace Slick\Template;
  * Engine Extension interface
  *
  * @package Slick\Template
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
 interface EngineExtensionInterface
 {
