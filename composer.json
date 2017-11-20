@@ -19,7 +19,9 @@
     }
   },
   "require": {},
-  "require-dev": {},
+  "require-dev": {
+    "phpspec/phpspec": "^4.0@alpha"
+  },
   "extra": {
     "branch-alias": {
       "dev-master": "1.3-dev",
