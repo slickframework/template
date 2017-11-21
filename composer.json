@@ -18,7 +18,9 @@
       "Slick\\Template\\": "src"
     }
   },
-  "require": {},
+  "require": {
+    "twig/twig": "1.x-dev"
+  },
   "require-dev": {
     "phpspec/phpspec": "^4.0@alpha"
   },
