@@ -16,7 +16,6 @@ use Slick\Template\Exception;
  * InvalidArgumentException
  *
  * @package   Slick\Template\Exception
- * @author    Filipe Silva <silvam.filipe@gmail.com>
  */
 class InvalidArgumentException extends \RuntimeException implements Exception
 {

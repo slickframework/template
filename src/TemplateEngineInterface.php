@@ -15,7 +15,6 @@ use Slick\Template\Exception\ParserException;
  * Template Engine interface
  *
  * @package Slick\Template
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
 interface TemplateEngineInterface
 {

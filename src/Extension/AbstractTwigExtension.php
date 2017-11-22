@@ -16,7 +16,6 @@ use Slick\Template\TemplateEngineInterface;
  * Abstract Twig Extension
  *
  * @package Slick\Template\Extension
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
 abstract class AbstractTwigExtension extends \Twig_Extension
 {

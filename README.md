@@ -1,16 +1,15 @@
 # Slick Template package
 
-[![Latest Version](https://img.shields.io/github/release/slickframework/template.svg?style=flat-square)](https://github.com/slickframework/template/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/slickframework/template/master.svg?style=flat-square)](https://travis-ci.org/slickframework/template)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/slickframework/template/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/slickframework/template/code-structure?branch=master)
-[![Quality Score](https://img.shields.io/scrutinizer/g/slickframework/template/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/slickframework/template?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/slick/template.svg?style=flat-square)](https://packagist.org/packages/slick/template)
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
 
 Slick Template is a simple wrapper to a template engine of your choice. It defines
-simple interfaces that allow you to create your own PHP template engines.
-It comes with Twig template engine implementation, a flexible, fast, and secure
-template engine for PHP.
+simple interfaces that allow you to create your own PHP template engines. It comes
+with Twig template engine implementation, a flexible, fast, and secure template
+engine for PHP.
 
 This package is compliant with PSR-2 code standards and PSR-4 autoload standards. It
 also applies the [semantic version 2.0.0](http://semver.org) specification.
@@ -75,26 +74,43 @@ Output:
 ```
 
 
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
 ## Testing
 
 ``` bash
-$ vendor/bin/phpunit
+$ composer test
 ```
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CONDUCT.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email silvam.filipe@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email slick.framework@gmail.com instead of using the issue tracker.
 
 ## Credits
 
-- [Slick framework](https://github.com/slickframework)
-- [All Contributors](https://github.com/slickframework/common/graphs/contributors)
+- [All Contributors][link-contributors]
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+[ico-version]: https://img.shields.io/packagist/v/slick/template.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/slickframework/template/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/slickframework/template.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/slickframework/template.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/slick/template.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/slick/template
+[link-travis]: https://travis-ci.org/slickframework/template
+[link-scrutinizer]: https://scrutinizer-ci.com/g/slickframework/template/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/slickframework/template
+[link-downloads]: https://packagist.org/packages/slickframework/template
+[link-contributors]: https://github.com/slickframework/template/graphs/contributors
 
