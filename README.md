@@ -56,9 +56,11 @@ All documentation and API for twig can be accessed in the [Twig project home pag
 Now lets grab some data and create the HTML output using the _twig_ template:
 
 ```php
-$data = (object)[
-    'title' => 'Sample blog post',
-    'teaser' => 'Sample teaser for the blog post.'
+$data = [
+    'post' => (object) [
+        'title' => 'Sample blog post',
+        'teaser' => 'Sample teaser for the blog post.'
+    ]
 ];
 
 $html = $template->parse('index.html.twig')
