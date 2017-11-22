@@ -11,4 +11,4 @@ before_script:
 
 script:
   - vendor/bin/phpspec run -fdot
-#  - vendor/bin/behat -f progress
+  - vendor/bin/behat -f progress
