@@ -9,45 +9,19 @@
 
 namespace Slick\Template\Engine;
 
-use Slick\Template\Exception\ParserException;
 use Slick\Template\TemplateEngineInterface;
+use Twig_Environment;
+use Twig_Extension_Debug;
+use Twig_Loader_Filesystem;
+use Twig_TemplateWrapper;
 
 /**
  * Twig
  *
  * @package Slick\Template\Engine
- * @author  Filipe Silva <silvam.filipe@gmail.com>
- *
- * @property array  $locations A list of paths for template files.
- * @property string $cache   Absolute path for compiled templates.
- * @property bool   $debug   Set debug mode and display the generated nodes.
- * @property string $charset The charset used by the templates.
- * @property string $baseTemplateClass
- *      The base template class to use for generated templates.
- * @property bool   $autoReload
- *      Recompile the template whenever the source code changes.
- * @property bool   $strictVariables
- *      When false it silently ignore invalid variables (variables and or
- *      attributes/methods that do not exist) and replace them with a null
- *      value.
- * @property bool   $autoEscape    HTML auto-escaping
- * @property int    $optimizations
- *      A flag that indicates which optimizations to apply (default
- *      to -1 -- all optimizations are enabled; set it to 0 to disable).
- *
- * @property \Twig_Loader_Filesystem $loader
- * @property \Twig_Environment $twigEnvironment
- * @property-write \Twig_Template $template
- *
  */
-class Twig extends AbstractEngine
+class Twig implements TemplateEngineInterface
 {
-
-    /**
-     * @readwrite
-     * @var \Twig_Loader_Filesystem
-     */
-    protected $loader;
 
     /**
      * @var array
@@ -64,70 +38,65 @@ class Twig extends AbstractEngine
     ];
 
     /**
-     * @readwrite
-     * @var \Twig_Environment
-     */
-    protected $twigEnvironment;
-
-    /**
-     * @write
-     * @var \Twig_Template
-     */
-    protected $template;
-
-    /**
-     * @readwrite
-     * @var string|false
-     */
-    protected $cache = false;
-
-    /**
-     * @readwrite
-     * @var string
-     */
-    protected $charset = 'utf8';
-
-    /**
-     * @readwrite
-     * @var string
-     */
-    protected $baseTemplateClass = 'Twig_Template';
-
-    /**
-     * @readwrite
-     * @var bool
-     */
-    protected $autoReload = false;
-
-    /**
-     * @readwrite
-     * @var bool
-     */
-    protected $strictVariables = false;
-
-    /**
-     * @readwrite
-     * @var bool|string
-     */
-    protected $autoEscape = true;
-
-    /**
-     * @readwrite
-     * @var int
-     */
-    protected $optimizations = -1;
-
-    /**
-     * @readwrite
-     * @var bool
-     */
-    protected $debug = false;
-
-    /**
-     * @readwrite
      * @var array
      */
-    protected $locations = [];
+    private $defaultOptions = [
+        'debug' => false,
+        'autoEscape' => true,
+        'strictVariables' => false,
+        'autoReload' => false,
+        'cache' => false,
+        'baseTemplateClass' => 'Twig_Template',
+        'charset' => 'utf8',
+        'optimizations' => -1
+    ];
+
+    /**
+     * @var array
+     */
+    private $options = [];
+
+    /**
+     * @var Twig_Environment
+     */
+    private $twigEnvironment;
+
+    /**
+     * @var array
+     */
+    private $locations = [];
+
+    /**
+     * @var Twig_Loader_Filesystem
+     */
+    private $loader;
+
+    /**
+     * @var Twig_TemplateWrapper
+     */
+    private $template;
+
+    /**
+     * Creates a Twig template engine
+     *
+     * @param array $options
+     * @param Twig_Environment $twigEnvironment
+     */
+    public function __construct(array $options = [], Twig_Environment $twigEnvironment = null)
+    {
+        $this->options = array_merge($this->defaultOptions, $options);
+        $this->twigEnvironment = $twigEnvironment;
+    }
+
+    /**
+     * Engine configuration options
+     *
+     * @return array
+     */
+    public function options()
+    {
+        return $this->options;
+    }
 
     /**
      * Parses the source template code.
@@ -136,20 +105,13 @@ class Twig extends AbstractEngine
      *
      * @return TemplateEngineInterface|self|$this
      *
-     * @throws ParserException If any error occurs parsing the template
+     * @throws \Twig_Error_Loader  When the template cannot be found
+     * @throws \Twig_Error_Runtime When a previously generated cache is corrupted
+     * @throws \Twig_Error_Syntax  When an error occurred during compilation
      */
     public function parse($source)
     {
-        try {
-            $this->template = $this->getTwigEnvironment()
-                ->loadTemplate($source);
-        } catch (\Exception $caught) {
-            throw new ParserException(
-                "Template parse error: ".$caught->getMessage(),
-                0,
-                $caught
-            );
-        }
+        $this->template = $this->getTwigEnvironment()->load($source);
         return $this;
     }
 
@@ -162,15 +124,7 @@ class Twig extends AbstractEngine
      */
     public function process($data = array())
     {
-        try {
-            return $this->template->render($data);
-        } catch (\Exception $caught) {
-            throw new ParserException(
-                "Template process error: ".$caught->getMessage(),
-                0,
-                $caught
-            );
-        }
+        return $this->template->render($data);
     }
 
     /**
@@ -186,11 +140,10 @@ class Twig extends AbstractEngine
         return $this;
     }
 
-
     /**
      * Returns the source template engine
      *
-     * @return \Twig_Environment
+     * @return object
      */
     public function getSourceEngine()
     {
@@ -198,34 +151,46 @@ class Twig extends AbstractEngine
     }
 
     /**
-     * Gets the twig environment object
+     * Creates a twig environment if not injected
      *
-     * @return \Twig_Environment
+     * @return Twig_Environment
      */
-    protected function getTwigEnvironment()
+    private function getTwigEnvironment()
     {
         if (null == $this->twigEnvironment) {
-            $this->twigEnvironment = new \Twig_Environment(
-                $this->getLoader(),
-                $this->getOptions()
-            );
-            if ($this->debug) {
-                $this->twigEnvironment
-                    ->addExtension(new \Twig_Extension_Debug());
-            }
+            $this->twigEnvironment = $this->createTwigEnvironment();
         }
         return $this->twigEnvironment;
     }
 
     /**
+     * Creates the twig environment
+     *
+     * @return Twig_Environment
+     */
+    private function createTwigEnvironment()
+    {
+        $twigEnv = new Twig_Environment(
+            $this->getLoader(),
+            $this->getOptions()
+        );
+
+        if ($this->options['debug']) {
+            $twigEnv->addExtension(new Twig_Extension_Debug());
+        }
+
+        return $twigEnv;
+    }
+
+    /**
      * Creates a file system loader
      *
-     * @return \Twig_Loader_Filesystem
+     * @return Twig_Loader_Filesystem
      */
-    protected function getLoader()
+    private function getLoader()
     {
         if (null == $this->loader) {
-            $this->loader = new \Twig_Loader_Filesystem(
+            $this->loader = new Twig_Loader_Filesystem(
                 $this->locations
             );
         }
@@ -237,11 +202,11 @@ class Twig extends AbstractEngine
      *
      * @return array
      */
-    protected function getOptions()
+    private function getOptions()
     {
         $options = [];
         foreach($this->optionsMap as $property => $name) {
-            $options[$name] = $this->$property;
+            $options[$name] = $this->options[$property];
         }
         return $options;
     }

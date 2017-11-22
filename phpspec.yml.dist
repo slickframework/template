@@ -1,0 +1,4 @@
+suites:
+  slick_template_suite:
+    namespace: Slick\Template
+    psr4_prefix: Slick\Template
