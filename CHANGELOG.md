@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v1.3.0] - 2017-11-22
+
 ### Removed
 - ``Slick\Template\EngineInterface`` it was deprecated and is removed.
 - ``Slick\Exception\ParserException`` it wold throw source engine exceptions instead.
@@ -59,7 +61,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/slickframework/template/compare/v1.2.5...HEAD
+[Unreleased]: https://github.com/slickframework/template/compare/v1.3.0...HEAD
+[v1.3.0]: https://github.com/slickframework/template/compare/v1.2.5...v1.3.0
 [v1.2.5]: https://github.com/slickframework/template/compare/v1.2.4...v1.2.5
 [v1.2.4]: https://github.com/slickframework/template/compare/v1.2.3...v1.2.4
 [v1.2.3]: https://github.com/slickframework/template/compare/v1.2.2...v1.2.3
