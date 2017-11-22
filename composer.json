@@ -22,7 +22,8 @@
     "twig/twig": "1.x-dev"
   },
   "require-dev": {
-    "phpspec/phpspec": "^4.0@alpha"
+    "phpspec/phpspec": "^4.0@alpha",
+    "behat/behat": "^3.2@dev"
   },
   "extra": {
     "branch-alias": {

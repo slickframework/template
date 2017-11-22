@@ -176,8 +176,7 @@ class Twig implements TemplateEngineInterface
         );
 
         if ($this->options['debug']) {
-            $this->twigEnvironment
-                ->addExtension(new Twig_Extension_Debug());
+            $twigEnv->addExtension(new Twig_Extension_Debug());
         }
 
         return $twigEnv;

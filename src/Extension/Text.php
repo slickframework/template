@@ -9,9 +9,7 @@
 
 namespace Slick\Template\Extension;
 
-use Slick\Template\Engine\Twig;
 use Slick\Template\EngineExtensionInterface;
-use Slick\Template\TemplateEngineInterface;
 
 /**
  * Twig text utility extension for Slick/Template
@@ -42,7 +40,7 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
             new \Twig_SimpleFilter(
                 'truncate',
                 function ($value, $len=75, $ter='...', $preserve = false) {
-                    return \Slick\Common\Utils\Text::truncate(
+                    return \Slick\Template\Utils\Text::truncate(
                         $value,
                         $len,
                         $ter,
@@ -53,7 +51,7 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
             new \Twig_SimpleFilter(
                 'wordwrap',
                 function ($value, $length = 75, $break = "\n", $cut = false) {
-                    return \Slick\Common\Utils\Text::wordwrap(
+                    return \Slick\Template\Utils\Text::wordwrap(
                         $value,
                         $length,
                         $break,

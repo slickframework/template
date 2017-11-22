@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - ``Slick\Template\EngineInterface`` it was deprecated and is removed.
 - ``Slick\Exception\ParserException`` it wold throw source engine exceptions instead.
 - ``Slick\Common`` library dependency
+- ``Slick\I18n`` dependency and extension
 
 ## [v1.2.5] - 2015-05-09
 
