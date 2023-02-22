@@ -18,7 +18,7 @@ use Slick\Template\Extension\Text;
  *
  * @package Slick\Template
  */
-class Template
+final class Template
 {
 
     /** Known engines */
@@ -27,39 +27,30 @@ class Template
     /** Known engine extensions */
     const EXTENSION_TWIG_TEXT = Text::class;
 
-    /**
-     * @var array
-     */
-    private $defaultOptions = [];
+    private array $defaultOptions = [];
+
+    private array $options;
+
+    private string $engine;
 
     /**
-     * @var array
+     * @var array<string> a list of available paths
      */
-    private $options;
+    private static array $paths = ['./'];
 
     /**
-     * @var string
+     * @var array<string, EngineExtensionInterface|null> Array containing template extensions
      */
-    private $engine;
-
-    /**
-     * @var string[] a list of available paths
-     */
-    private static $paths = ['./'];
-
-    /**
-     * @var array Array containing template extensions
-     */
-    private static $extensions = [
+    private static array $extensions = [
         self::EXTENSION_TWIG_TEXT => null,
     ];
 
     /**
      * Creates a template factory
      *
-     * @param array $options
+     * @param array|null $options
      */
-    public function __construct(array $options = [])
+    public function __construct(?array $options = [])
     {
         $this->engine = array_key_exists('engine', $options)
             ? $this->checkEngine($options['engine'])
@@ -75,7 +66,7 @@ class Template
      *
      * @param string $path
      */
-    public static function addPath($path)
+    public static function addPath(string $path): void
     {
         $path = str_replace('//', '/', rtrim($path, '/'));
         if (is_dir($path) && !in_array($path, self::$paths)) {
@@ -88,23 +79,23 @@ class Template
      *
      * @param string $path
      */
-    public static function appendPath($path)
+    public static function appendPath(string $path): void
     {
         $path = str_replace('//', '/', rtrim($path, '/'));
         if (is_dir($path) && !in_array($path, self::$paths)) {
-            array_push(self::$paths, $path);
+            self::$paths[] = $path;
         }
     }
 
     /**
      * Adds an extension to the template engine
      *
-     * @param string|object $className The class name or an instance
+     * @param object|string $className The class name or an instance
      *                                 of EngineExtensionInterface interface
      *
-     * @return self|$this|Template
+     * @return self
      */
-    public function addExtension($className)
+    public function addExtension(object|string $className): self
     {
         $object = is_object($className) ? $className : null;
         $className = is_object($className) ? get_class($object) : $className;
@@ -120,7 +111,7 @@ class Template
      *
      * @return TemplateEngineInterface
      */
-    public function initialize()
+    public function initialize(): TemplateEngineInterface
     {
         /** @var TemplateEngineInterface $engine */
         $engine = new $this->engine($this->options);
@@ -136,12 +127,12 @@ class Template
      *
      * @return string
      */
-    private function checkEngine($engine)
+    private function checkEngine(string $engine): string
     {
         if (! is_subclass_of($engine, TemplateEngineInterface::class)) {
             $name = TemplateEngineInterface::class;
             throw new InvalidArgumentException(
-                "Class '{$engine}' does not implement '{$name}'."
+                "Class '$engine' does not implement '$name'."
             );
         }
         return $engine;
@@ -152,28 +143,27 @@ class Template
      *
      * @param TemplateEngineInterface $engine
      *
-     * @return TemplateEngineInterface
+     * @return void
      */
-    private function applyExtensions(TemplateEngineInterface $engine)
+    private function applyExtensions(TemplateEngineInterface $engine): void
     {
-        foreach (static::$extensions as $className => $extension) {
+        foreach (Template::$extensions as $className => $extension) {
             $ext = $this->getExtension($className, $extension);
             if ($ext->appliesTo($engine)) {
                 $ext->update($engine);
             }
         }
-        return $engine;
     }
 
     /**
      * Creates the extension
      *
      * @param string $class
-     * @param EngineExtensionInterface $extension
+     * @param EngineExtensionInterface|string|null $extension
      *
      * @return EngineExtensionInterface
      */
-    private function getExtension($class, $extension)
+    private function getExtension(string $class, EngineExtensionInterface|string|null $extension): EngineExtensionInterface
     {
         if (is_object($extension)) {
             return $extension;
@@ -187,16 +177,15 @@ class Template
      *
      * @param string $class
      *
-     * @return string
+     * @return void
      */
-    private function checkExtension($class)
+    private function checkExtension(string $class): void
     {
         if (! is_subclass_of($class, EngineExtensionInterface::class)) {
             $name = TemplateEngineInterface::class;
             throw new InvalidArgumentException(
-                "Engine extension '{$class}' does not implement '{$name}'."
+                "Engine extension '$class' does not implement '$name'."
             );
         }
-        return $class;
     }
 }

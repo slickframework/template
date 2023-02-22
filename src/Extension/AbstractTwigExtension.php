@@ -11,13 +11,15 @@ namespace Slick\Template\Extension;
 
 use Slick\Template\Engine\Twig;
 use Slick\Template\TemplateEngineInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\ExtensionInterface;
 
 /**
  * Abstract Twig Extension
  *
  * @package Slick\Template\Extension
  */
-abstract class AbstractTwigExtension extends \Twig_Extension
+abstract class AbstractTwigExtension extends AbstractExtension implements ExtensionInterface
 {
 
     /**
@@ -27,7 +29,7 @@ abstract class AbstractTwigExtension extends \Twig_Extension
      *
      * @return void
      */
-    public function update(TemplateEngineInterface $engine)
+    public function update(TemplateEngineInterface $engine): void
     {
         $engine->getSourceEngine()->addExtension($this);
     }
@@ -40,7 +42,7 @@ abstract class AbstractTwigExtension extends \Twig_Extension
      * @return bool True if this extension applies to provided engine object
      *      or false otherwise
      */
-    public function appliesTo(TemplateEngineInterface $engine)
+    public function appliesTo(TemplateEngineInterface $engine): bool
     {
         return $engine instanceOf Twig;
     }

@@ -24,7 +24,7 @@ interface EngineExtensionInterface
      *
      * @return void
      */
-    public function update(TemplateEngineInterface $engine);
+    public function update(TemplateEngineInterface $engine): void;
 
     /**
      * Check if this extension is applicable to provided engine object
@@ -34,5 +34,5 @@ interface EngineExtensionInterface
      * @return bool True if this extension applies to provided engine object
      *      or false otherwise
      */
-    public function appliesTo(TemplateEngineInterface $engine);
+    public function appliesTo(TemplateEngineInterface $engine): bool;
 }
