@@ -31,15 +31,18 @@ abstract class Text
      * space character counting from the provided length.
      *
      * @param string $value
-     * @param int    $length
+     * @param int $length
      * @param string $terminator
-     * @param bool   $preserve
+     * @param bool $preserve
      *
      * @return string The truncate string
      */
     public static function truncate(
-        $value, $length = 80, $terminator = "\n", $preserve = false
-    ) {
+        string $value,
+        int $length = 80,
+        string $terminator = "\n",
+        bool $preserve = false
+    ): string {
         $length = $preserve
             ? static::preserveBreakpoint($value, $length)
             : $length;
@@ -55,11 +58,11 @@ abstract class Text
      * break character.
      *
      * @param string $value  The input string.
-     * @param int    $length The number of characters at which the string
+     * @param int $length The number of characters at which the string
      *                       will be wrapped.
      * @param string $break  The line is broken using the optional
      *                       break parameter.
-     * @param bool   $cut    If the cut is set to TRUE, the string is always
+     * @param bool $cut    If the cut is set to TRUE, the string is always
      *                       wrapped at or before the specified width. So if
      *                       you have a word that is larger than the given
      *                       width, it is broken apart. When FALSE the function
@@ -69,8 +72,11 @@ abstract class Text
      * @return string Returns the given string wrapped at the specified length.
      */
     public static function wordwrap(
-        $value, $length = 75, $break = "\n", $cut = false
-    ) {
+        string $value,
+        int $length = 75,
+        string $break = "\n",
+        bool $cut = false
+    ): string {
         return wordwrap($value, $length, $break, $cut);
     }
 
@@ -78,11 +84,11 @@ abstract class Text
      * Check truncate length to avoid split a word
      *
      * @param string $value
-     * @param int    $length
+     * @param int $length
      *
      * @return int
      */
-    private static function preserveBreakpoint($value, $length)
+    private static function preserveBreakpoint(string $value, int $length): int
     {
         if (strlen($value) <= $length) {
             return $length;

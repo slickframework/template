@@ -10,10 +10,13 @@
 namespace Slick\Template\Engine;
 
 use Slick\Template\TemplateEngineInterface;
-use Twig_Environment;
-use Twig_Extension_Debug;
-use Twig_Loader_Filesystem;
-use Twig_TemplateWrapper;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+use Twig\Extension\DebugExtension;
+use Twig\Loader\FilesystemLoader;
+use Twig\TemplateWrapper;
 
 /**
  * Twig
@@ -23,12 +26,9 @@ use Twig_TemplateWrapper;
 class Twig implements TemplateEngineInterface
 {
 
-    /**
-     * @var array
-     */
-    private $optionsMap = [
+    private array $optionsMap = [
         'debug' => 'debug',
-        'autoEscape' => 'autoescape',
+        'autoEscape' => 'html',
         'strictVariables' => 'strict_variables',
         'autoReload' => 'auto_reload',
         'cache' => 'cache',
@@ -37,10 +37,7 @@ class Twig implements TemplateEngineInterface
         'optimizations' => 'optimizations'
     ];
 
-    /**
-     * @var array
-     */
-    private $defaultOptions = [
+    private array $defaultOptions = [
         'debug' => false,
         'autoEscape' => true,
         'strictVariables' => false,
@@ -51,41 +48,23 @@ class Twig implements TemplateEngineInterface
         'optimizations' => -1
     ];
 
-    /**
-     * @var array
-     */
-    private $options = [];
+    private array $options ;
 
-    /**
-     * @var Twig_Environment
-     */
-    private $twigEnvironment;
+    private array $locations = [];
 
-    /**
-     * @var array
-     */
-    private $locations = [];
+    private ?FilesystemLoader $loader = null;
 
-    /**
-     * @var Twig_Loader_Filesystem
-     */
-    private $loader;
-
-    /**
-     * @var Twig_TemplateWrapper
-     */
-    private $template;
+    private ?TemplateWrapper $template = null;
 
     /**
      * Creates a Twig template engine
      *
      * @param array $options
-     * @param Twig_Environment $twigEnvironment
+     * @param Environment|null $twigEnvironment
      */
-    public function __construct(array $options = [], Twig_Environment $twigEnvironment = null)
+    public function __construct(array $options = [], private ?Environment $twigEnvironment = null)
     {
         $this->options = array_merge($this->defaultOptions, $options);
-        $this->twigEnvironment = $twigEnvironment;
     }
 
     /**
@@ -93,7 +72,7 @@ class Twig implements TemplateEngineInterface
      *
      * @return array
      */
-    public function options()
+    public function options(): array
     {
         return $this->options;
     }
@@ -103,13 +82,13 @@ class Twig implements TemplateEngineInterface
      *
      * @param string $source The template to parse
      *
-     * @return TemplateEngineInterface|self|$this
+     * @return Twig
      *
-     * @throws \Twig_Error_Loader  When the template cannot be found
-     * @throws \Twig_Error_Runtime When a previously generated cache is corrupted
-     * @throws \Twig_Error_Syntax  When an error occurred during compilation
+     * @throws LoaderError When the template cannot be found
+     * @throws RuntimeError When a previously generated cache is corrupted
+     * @throws SyntaxError When an error occurred during compilation
      */
-    public function parse($source)
+    public function parse($source): self
     {
         $this->template = $this->getTwigEnvironment()->load($source);
         return $this;
@@ -122,7 +101,7 @@ class Twig implements TemplateEngineInterface
      *
      * @return string Returns processed output string.
      */
-    public function process($data = array())
+    public function process($data = array()): string
     {
         return $this->template->render($data);
     }
@@ -132,9 +111,9 @@ class Twig implements TemplateEngineInterface
      *
      * @param array $locations
      *
-     * @return TemplateEngineInterface|self|$this
+     * @return Twig
      */
-    public function setLocations(array $locations)
+    public function setLocations(array $locations): self
     {
         $this->locations = $locations;
         return $this;
@@ -143,9 +122,9 @@ class Twig implements TemplateEngineInterface
     /**
      * Returns the source template engine
      *
-     * @return object
+     * @return Environment
      */
-    public function getSourceEngine()
+    public function getSourceEngine(): Environment
     {
         return $this->getTwigEnvironment();
     }
@@ -153,9 +132,9 @@ class Twig implements TemplateEngineInterface
     /**
      * Creates a twig environment if not injected
      *
-     * @return Twig_Environment
+     * @return Environment
      */
-    private function getTwigEnvironment()
+    private function getTwigEnvironment(): Environment
     {
         if (null == $this->twigEnvironment) {
             $this->twigEnvironment = $this->createTwigEnvironment();
@@ -163,20 +142,21 @@ class Twig implements TemplateEngineInterface
         return $this->twigEnvironment;
     }
 
+
     /**
      * Creates the twig environment
      *
-     * @return Twig_Environment
+     * @return Environment
      */
-    private function createTwigEnvironment()
+    private function createTwigEnvironment(): Environment
     {
-        $twigEnv = new Twig_Environment(
+        $twigEnv = new Environment(
             $this->getLoader(),
             $this->getOptions()
         );
 
         if ($this->options['debug']) {
-            $twigEnv->addExtension(new Twig_Extension_Debug());
+            $twigEnv->addExtension(new DebugExtension());
         }
 
         return $twigEnv;
@@ -185,12 +165,12 @@ class Twig implements TemplateEngineInterface
     /**
      * Creates a file system loader
      *
-     * @return Twig_Loader_Filesystem
+     * @return FilesystemLoader
      */
-    private function getLoader()
+    private function getLoader(): FilesystemLoader
     {
         if (null == $this->loader) {
-            $this->loader = new Twig_Loader_Filesystem(
+            $this->loader = new FilesystemLoader(
                 $this->locations
             );
         }
@@ -202,10 +182,10 @@ class Twig implements TemplateEngineInterface
      *
      * @return array
      */
-    private function getOptions()
+    private function getOptions(): array
     {
         $options = [];
-        foreach($this->optionsMap as $property => $name) {
+        foreach ($this->optionsMap as $property => $name) {
             $options[$name] = $this->options[$property];
         }
         return $options;

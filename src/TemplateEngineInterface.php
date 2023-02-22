@@ -9,6 +9,7 @@
 
 namespace Slick\Template;
 
+use RuntimeException;
 use Slick\Template\Exception\ParserException;
 
 /**
@@ -26,9 +27,9 @@ interface TemplateEngineInterface
      *
      * @return TemplateEngineInterface|self|$this
      *
-     * @throws ParserException If any error occurs parsing the template
+     * @throws RuntimeException If any error occurs parsing the template
      */
-    public function parse($source);
+    public function parse($source): self;
 
     /**
      * Processes the template with data to produce the final output.
@@ -37,7 +38,7 @@ interface TemplateEngineInterface
      *
      * @return string Returns processed output string.
      */
-    public function process($data = array());
+    public function process($data = array()): string;
 
     /**
      * Sets the list of available locations for template files.
@@ -46,12 +47,12 @@ interface TemplateEngineInterface
      *
      * @return TemplateEngineInterface|self|$this
      */
-    public function setLocations(array $locations);
+    public function setLocations(array $locations): self;
 
     /**
      * Returns the source template engine
      *
      * @return object
      */
-    public function getSourceEngine();
+    public function getSourceEngine(): object;
 }

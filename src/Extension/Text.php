@@ -10,6 +10,7 @@
 namespace Slick\Template\Extension;
 
 use Slick\Template\EngineExtensionInterface;
+use Twig\TwigFilter;
 
 /**
  * Twig text utility extension for Slick/Template
@@ -24,7 +25,7 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
      *
      * @return string The extension name
      */
-    public function getName()
+    public function getName(): string
     {
         return 'Text utilities extension';
     }
@@ -32,14 +33,14 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
     /**
      * Returns a list of filters
      *
-     * @return array
+     * @return array<TwigFilter>
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter(
+            new TwigFilter(
                 'truncate',
-                function ($value, $len=75, $ter='...', $preserve = false) {
+                function ($value, $len = 75, $ter = '...', $preserve = false) {
                     return \Slick\Template\Utils\Text::truncate(
                         $value,
                         $len,
@@ -48,7 +49,7 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
                     );
                 }
             ),
-            new \Twig_SimpleFilter(
+            new TwigFilter(
                 'wordwrap',
                 function ($value, $length = 75, $break = "\n", $cut = false) {
                     return \Slick\Template\Utils\Text::wordwrap(

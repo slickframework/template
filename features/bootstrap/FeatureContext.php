@@ -2,6 +2,9 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
+use Slick\Template\EngineExtensionInterface;
+use Slick\Template\Extension\AbstractTwigExtension;
+use Twig\TwigFilter;
 
 /**
  * Defines application features from the specific context.
@@ -131,8 +134,7 @@ class FeatureContext implements Context
     }
 }
 
-class CustomException extends \Slick\Template\Extension\AbstractTwigExtension implements
-    \Slick\Template\EngineExtensionInterface
+class CustomException extends AbstractTwigExtension implements EngineExtensionInterface
 {
     /**
      * Returns the name of the extension.
@@ -152,9 +154,9 @@ class CustomException extends \Slick\Template\Extension\AbstractTwigExtension im
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter(
-                'custom',
-                function ($text) {
+            new TwigFilter(
+                name: 'custom',
+                callable: function ($text) {
                     return strtoupper($text);
                 }
             )

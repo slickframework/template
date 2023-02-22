@@ -12,7 +12,8 @@ namespace spec\Slick\Template\Engine;
 use Slick\Template\Engine\Twig;
 use PhpSpec\ObjectBehavior;
 use Slick\Template\TemplateEngineInterface;
-use Twig_Environment;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 /**
  * TwigSpec specs
@@ -25,10 +26,13 @@ class TwigSpec extends ObjectBehavior
         'autoEscape' => false
     ];
 
-    function let(Twig_Environment $twigEnvironment, template $template)
+    private Environment $environment;
+
+    function let(Environment $twigEnvironment, template $template)
     {
         $template->render(['foo' => 'bar'])->willReturn('test bar');
-        $this->beConstructedWith($this->options, $twigEnvironment);
+        $this->environment = new Environment(new FilesystemLoader([__DIR__]));
+        $this->beConstructedWith($this->options, $this->environment);
     }
 
     function its_a_template_engine()
@@ -46,9 +50,9 @@ class TwigSpec extends ObjectBehavior
         $this->options()->shouldHaveKeyWithValue('autoEscape', false);
     }
 
-    function it_has_a_source_engine(Twig_Environment $twigEnvironment)
+    function it_has_a_source_engine()
     {
-        $this->getSourceEngine()->shouldBe($twigEnvironment);
+        $this->getSourceEngine()->shouldBe($this->environment);
     }
 
     function it_can_accept_a_list_of_template_locations()
@@ -57,20 +61,17 @@ class TwigSpec extends ObjectBehavior
         $this->setLocations($locations)->shouldBe($this->getWrappedObject());
     }
 
-    function it_parses_a_source_template(Twig_Environment $twigEnvironment, template $template)
+    function it_parses_a_source_template()
     {
         $source = 'test.twig';
-        $twigEnvironment->load($source)->shouldBeCalled()->willReturn($template);
         $this->parse($source)->shouldBe($this->getWrappedObject());
     }
 
-    function it_renders_a_previously_loaded_template(Twig_Environment $twigEnvironment, template $template)
+    function it_renders_a_previously_loaded_template()
     {
         $source = 'test.twig';
-        $twigEnvironment->load($source)->willReturn($template);
         $this->parse($source);
-        $this->process(['foo' => 'bar'])->shouldBe('test bar');
-        $template->render(['foo' => 'bar'])->shouldHaveBeenCalled();
+        $this->process(['foo' => 'bar'])->shouldBe('the test bar was ok!');
     }
 }
 
