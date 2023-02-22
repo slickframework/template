@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v2.0.0] - 2023-02-22
+### Added
+- support for PHP 8.x
+### Changed
+- Now using ``twig/twig`` ver ^3.x
+### Removed
+- support to php <= 7.x
+- travis.org pipeline
+
 ## [v1.3.0] - 2017-11-22
 
 ### Removed
 - ``Slick\Template\EngineInterface`` it was deprecated and is removed.
-- ``Slick\Exception\ParserException`` it wold throw source engine exceptions instead.
+- ``Slick\Exception\ParserException`` it would throw source engine exceptions instead.
 - ``Slick\Common`` library dependency
 - ``Slick\I18n`` dependency and extension
 

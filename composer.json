@@ -4,7 +4,6 @@
   "license": "MIT",
   "homepage": "https://github.com/slickframework/template",
   "keywords": ["slick", "template", "twig"],
-  "version": "v1.3.0",
   "minimum-stability": "dev",
   "authors": [
     {
@@ -19,16 +18,23 @@
     }
   },
   "require": {
-    "twig/twig": "1.x-dev"
+    "php": ">=8.0",
+    "twig/twig": "^2.15.0|3.x-dev"
   },
   "require-dev": {
-    "phpspec/phpspec": "^4.0@alpha",
-    "behat/behat": "^3.2@dev"
+    "phpspec/phpspec": "^8.0@dev",
+    "behat/behat": "4.x-dev",
+    "squizlabs/php_codesniffer": "4.0.x-dev"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.3-dev",
-      "dev-develop": "1.4-dev"
+      "dev-master": "2.0-dev",
+      "dev-develop": "2.1-dev"
     }
+  },
+  "scripts": {
+    "test": "phpspec run --format=dot && behat -fprogress",
+    "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+    "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
   }
 }

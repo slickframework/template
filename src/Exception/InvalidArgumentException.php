@@ -9,15 +9,15 @@
 
 namespace Slick\Template\Exception;
 
+use RuntimeException;
 use Slick\Template\Exception;
-
 
 /**
  * InvalidArgumentException
  *
  * @package   Slick\Template\Exception
  */
-class InvalidArgumentException extends \RuntimeException implements Exception
+class InvalidArgumentException extends RuntimeException implements Exception
 {
 
 }
