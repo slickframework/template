@@ -44,6 +44,6 @@ abstract class AbstractTwigExtension extends AbstractExtension implements Extens
      */
     public function appliesTo(TemplateEngineInterface $engine): bool
     {
-        return $engine instanceOf Twig;
+        return $engine instanceof Twig;
     }
 }

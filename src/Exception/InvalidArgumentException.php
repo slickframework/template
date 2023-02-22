@@ -12,7 +12,6 @@ namespace Slick\Template\Exception;
 use RuntimeException;
 use Slick\Template\Exception;
 
-
 /**
  * InvalidArgumentException
  *

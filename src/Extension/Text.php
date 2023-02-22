@@ -40,7 +40,7 @@ class Text extends AbstractTwigExtension implements EngineExtensionInterface
         return [
             new TwigFilter(
                 'truncate',
-                function ($value, $len=75, $ter='...', $preserve = false) {
+                function ($value, $len = 75, $ter = '...', $preserve = false) {
                     return \Slick\Template\Utils\Text::truncate(
                         $value,
                         $len,

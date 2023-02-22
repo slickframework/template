@@ -9,7 +9,6 @@
 
 namespace Slick\Template;
 
-
 /**
  * Exception
  *

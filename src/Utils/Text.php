@@ -38,7 +38,10 @@ abstract class Text
      * @return string The truncate string
      */
     public static function truncate(
-        string $value, int $length = 80, string $terminator = "\n", bool $preserve = false
+        string $value,
+        int $length = 80,
+        string $terminator = "\n",
+        bool $preserve = false
     ): string {
         $length = $preserve
             ? static::preserveBreakpoint($value, $length)
@@ -69,7 +72,10 @@ abstract class Text
      * @return string Returns the given string wrapped at the specified length.
      */
     public static function wordwrap(
-        string $value, int $length = 75, string $break = "\n", bool $cut = false
+        string $value,
+        int $length = 75,
+        string $break = "\n",
+        bool $cut = false
     ): string {
         return wordwrap($value, $length, $break, $cut);
     }

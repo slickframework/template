@@ -18,7 +18,6 @@ use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
 
-
 /**
  * Twig
  *
@@ -186,7 +185,7 @@ class Twig implements TemplateEngineInterface
     private function getOptions(): array
     {
         $options = [];
-        foreach($this->optionsMap as $property => $name) {
+        foreach ($this->optionsMap as $property => $name) {
             $options[$name] = $this->options[$property];
         }
         return $options;

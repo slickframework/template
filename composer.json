@@ -23,12 +23,18 @@
   },
   "require-dev": {
     "phpspec/phpspec": "^8.0@dev",
-    "behat/behat": "4.x-dev"
+    "behat/behat": "4.x-dev",
+    "squizlabs/php_codesniffer": "4.0.x-dev"
   },
   "extra": {
     "branch-alias": {
       "dev-master": "2.0-dev",
       "dev-develop": "2.1-dev"
     }
+  },
+  "scripts": {
+    "test": "phpspec run --format=dot && behat -fprogress",
+    "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+    "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
   }
 }

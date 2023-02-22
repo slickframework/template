@@ -163,8 +163,10 @@ final class Template
      *
      * @return EngineExtensionInterface
      */
-    private function getExtension(string $class, EngineExtensionInterface|string|null $extension): EngineExtensionInterface
-    {
+    private function getExtension(
+        string $class,
+        EngineExtensionInterface|string|null $extension
+    ): EngineExtensionInterface {
         if (is_object($extension)) {
             return $extension;
         }
