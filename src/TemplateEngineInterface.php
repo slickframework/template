@@ -1,58 +1,60 @@
 <?php
 
 /**
- * This file is part of slick/template package
+ * This file is part of template
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Slick\Template;
 
-use RuntimeException;
-use Slick\Template\Exception\ParserException;
-
 /**
- * Template Engine interface
+ * TemplateEngineInterface
  *
  * @package Slick\Template
  */
 interface TemplateEngineInterface
 {
+    /**
+     * Parses the given source and returns an instance of the current class.
+     *
+     * @param string $source The source template file path to be parsed.
+     * @return self The instance of the current class.
+     * @throws TemplateException Whenever an error occurs during parse
+     */
+    public function parse(string $source): self;
 
     /**
-     * Parses the source template code.
+     * Processes the template with given data and returns a string representation.
      *
-     * @param string $source The template to parse
-     *
-     * @return TemplateEngineInterface|self|$this
-     *
-     * @throws RuntimeException If any error occurs parsing the template
+     * @param array<string, mixed> $data The data to be processed. Default value is an empty array.
+     * @return string The string representation of the processed template with data.
      */
-    public function parse($source): self;
+    public function process(array $data = array()): string;
 
     /**
-     * Processes the template with data to produce the final output.
+     * Sets the locations where engine can search for templates
      *
-     * @param mixed $data The data that will be used to process the view.
-     *
-     * @return string Returns processed output string.
+     * @param array<string|int, string> $locations The array of template files locations
+     * @return self
      */
-    public function process($data = array()): string;
+    public function withLocations(array $locations): self;
 
     /**
-     * Sets the list of available locations for template files.
+     * Adds a location to the list of locations
      *
-     * @param array $locations
-     *
-     * @return TemplateEngineInterface|self|$this
+     * @param string $location The template files location to be added
+     * @return self
      */
-    public function setLocations(array $locations): self;
+    public function addLocations(string $location): self;
 
     /**
      * Returns the source template engine
      *
      * @return object
      */
-    public function getSourceEngine(): object;
+    public function sourceEngine(): object;
 }
