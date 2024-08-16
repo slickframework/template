@@ -24,7 +24,10 @@
     }
   },
   "require": {
-    "php": ">=8.2"
+    "php": ">=8.2",
+    "slick/module-api": "dev-main",
+    "slick/webstack": "^2",
+    "twig/twig": "4.x-dev"
   },
   "require-dev": {
     "phpmd/phpmd": "dev-master",

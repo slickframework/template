@@ -36,22 +36,6 @@ interface TemplateEngineInterface
     public function process(array $data = array()): string;
 
     /**
-     * Sets the locations where engine can search for templates
-     *
-     * @param array<string|int, string> $locations The array of template files locations
-     * @return self
-     */
-    public function withLocations(array $locations): self;
-
-    /**
-     * Adds a location to the list of locations
-     *
-     * @param string $location The template files location to be added
-     * @return self
-     */
-    public function addLocations(string $location): self;
-
-    /**
      * Returns the source template engine
      *
      * @return object
