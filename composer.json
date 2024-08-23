@@ -25,6 +25,7 @@
   },
   "require": {
     "php": ">=8.2",
+    "league/commonmark": "^2.6@dev",
     "slick/error-handler": "^0.3.0@dev",
     "slick/module-api": "dev-main",
     "twig/markdown-extra": "^2|3.x",

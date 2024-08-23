@@ -21,6 +21,9 @@ use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\Extra\Markdown\DefaultMarkdown;
+use Twig\Extra\Markdown\MarkdownRuntime;
+use Twig\RuntimeLoader\RuntimeLoaderInterface;
 
 /**
  * PrettyErrorHandler
@@ -41,6 +44,13 @@ final class PrettyErrorHandler implements HandlerInterface
         $twig = new Environment($loader, ['cache' => false, 'debug' => true]);
         $twig->addExtension(new DebugExtension());
         $twig->addExtension(new MarkdownExtension());
+        $twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
+            public function load($class) {
+                if (MarkdownRuntime::class === $class) {
+                    return new MarkdownRuntime(new DefaultMarkdown());
+                }
+            }
+        });
         $templateEngine = new TwigTemplateEngine($twig);
 
         return new static($templateEngine);
@@ -65,9 +75,10 @@ final class PrettyErrorHandler implements HandlerInterface
         return trim(end($parts));
     }
 
+
     public function version(): string
     {
-        $composerFile = dirname(__DIR__, 2) . '/webstack/composer.json';
+        $composerFile = dirname(__DIR__, 3) . '/webstack/composer.json';
         $file = is_file($composerFile)
             ? $composerFile
             : dirname(dirname(__DIR__)) . '/vendor/slick/webstack/composer.json';
