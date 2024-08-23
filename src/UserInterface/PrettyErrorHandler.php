@@ -16,7 +16,6 @@ use Slick\ErrorHandler\Handler\HandlerInterface;
 use Slick\ErrorHandler\RunnerInterface;
 use Slick\Template\Engine\TwigTemplateEngine;
 use Slick\Template\TemplateEngineInterface;
-use Slick\WebStack\Infrastructure\ComposerParser;
 use Throwable;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
@@ -73,7 +72,7 @@ final class PrettyErrorHandler implements HandlerInterface
             ? $composerFile
             : dirname(dirname(__DIR__)) . '/vendor/slick/webstack/composer.json';
 
-        $composer = new ComposerParser($file);
-        return $composer->version();
+        $composer = json_decode(file_get_contents($file));
+        return $composer->version;
     }
 }
