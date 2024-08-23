@@ -32,21 +32,28 @@ final class TemplateModule extends AbstractModule implements WebModuleInterface
 
     public function settings(Dotenv $dotenv): array
     {
-        $defaultSettings = dirname(__DIR__) . '/config/settings.php';
+        $defaultSettings = importSettingsFile(dirname(__DIR__) . '/config/settings.php');
         $userSettings = ['template' => importSettingsFile(APP_ROOT . '/config/modules/template.php')];
-        return mergeArrays(importSettingsFile($defaultSettings), $userSettings);
+        $userSettings['template']['paths'] = array_merge(
+            $userSettings['template']['paths'],
+            $defaultSettings['template']['paths']
+        );
+
+        return mergeArrays($defaultSettings, $userSettings);
     }
 
     public function description(): ?string
     {
-        return "Allows integration and usage of a template engine with your application.";
+        return "Allows integration and usage of a template engine of your choice.";
     }
 
     public function onEnable(array $context = []): void
     {
-        $path = APP_ROOT . 'templates';
-        if (!file_exists($path)) {
-            mkdir($path, 0755, true);
+        $path = APP_ROOT . '/templates';
+        if (file_exists($path)) {
+            return;
         }
+
+        mkdir($path, 0755, true);
     }
 }
