@@ -1,11 +1,11 @@
 {
   "name": "slick/template",
-  "description": "Template component for Slick Framework",
+  "description": "Allows integration and usage of a template engine of your choice with slick framework.",
   "license": "MIT",
   "homepage": "https://github.com/slickframework/template",
   "keywords": ["slick-php", "template", "twig", "slick-php-module"],
   "minimum-stability": "dev",
-  "version": "v2.1.0",
+  "version": "v3.0.0",
   "authors": [
     {
       "name": "Filipe Silva",
@@ -27,9 +27,8 @@
     "php": ">=8.2",
     "slick/error-handler": "^0.3.0@dev",
     "slick/module-api": "dev-main",
-    "slick/webstack": "^2",
-    "twig/markdown-extra": "^3",
-    "twig/twig": "^3"
+    "twig/markdown-extra": "^2|3.x",
+    "twig/twig": "^2.15.0|3.x-dev"
   },
   "require-dev": {
     "phpmd/phpmd": "dev-master",

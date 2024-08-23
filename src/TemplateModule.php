@@ -30,6 +30,13 @@ final class TemplateModule extends AbstractModule implements WebModuleInterface
         return importSettingsFile($servicesFile);
     }
 
+    /**
+     * Get the merged settings from default and user configurations.
+     *
+     * @param Dotenv $dotenv The Dotenv instance.
+     * @return array<string, mixed> The merged settings array.
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function settings(Dotenv $dotenv): array
     {
         $defaultSettings = importSettingsFile(dirname(__DIR__) . '/config/settings.php');
@@ -47,6 +54,14 @@ final class TemplateModule extends AbstractModule implements WebModuleInterface
         return "Allows integration and usage of a template engine of your choice.";
     }
 
+    /**
+     * Handles the "onEnable" event.
+     *
+     * @param array<string, mixed> $context An optional array of context data.
+     *
+     * @return void
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function onEnable(array $context = []): void
     {
         $path = APP_ROOT . '/templates';
