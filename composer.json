@@ -1,10 +1,11 @@
 {
   "name": "slick/template",
-  "description": "Template component for Slick Framework",
+  "description": "Allows integration and usage of a template engine of your choice with slick framework.",
   "license": "MIT",
   "homepage": "https://github.com/slickframework/template",
-  "keywords": ["slick", "template", "twig"],
+  "keywords": ["slick-php", "template", "twig", "slick-php-module"],
   "minimum-stability": "dev",
+  "version": "v3.0.0",
   "authors": [
     {
       "name": "Filipe Silva",
@@ -17,24 +18,43 @@
       "Slick\\Template\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Slick\\Template\\": "tests"
+    }
+  },
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.2",
+    "slick/error-handler": "^0.3.0@dev",
+    "slick/module-api": "dev-main",
+    "twig/markdown-extra": "^2|3.x",
     "twig/twig": "^2.15.0|3.x-dev"
   },
   "require-dev": {
-    "phpspec/phpspec": "^8.0@dev",
-    "behat/behat": "4.x-dev",
+    "phpmd/phpmd": "dev-master",
+    "phpspec/prophecy": "^1.0@dev",
+    "phpspec/prophecy-phpunit": "^2.0@dev",
+    "phpstan/phpstan": "2.0.x-dev",
+    "phpunit/phpunit": "^11.4@dev",
     "squizlabs/php_codesniffer": "4.0.x-dev"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "2.0-dev",
-      "dev-develop": "2.1-dev"
+      "dev-master": "2.1-dev",
+      "dev-develop": "2.x-dev"
     }
   },
   "scripts": {
-    "test": "phpspec run --format=dot && behat -fprogress",
+    "test": "phpunit",
     "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
-    "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
+    "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+    "check-code": "phpmd --ignore-errors-on-exit src html build/phpmd.xml > build/phpmd.html && phpstan analyze"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "optimize-autoloader": true
   }
 }

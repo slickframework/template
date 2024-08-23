@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v3.0.0] - 2024-08-23
+### Added
+- Error handler for `slick/error-handler` module
+- New ``TemplateEngineInterface::sourceEngine()`` method to retrieve the underlying engine object
+- ``TemplateMethods`` trait that you can use on controllers to return an HTTP response with content
+  rendered from template engine.
+- New implementation of ``TemplateEngineInterface`` to use `twig/twig` v3.x
+- Module for Slick Framework that will integrate with `slick/di`,`slick/configuration`, and
+  `slick/module-api`, allowing the usage of template engine.
+- `phpunit/phpunit` as test framework
+### Removed
+- ``TemplateEngineInterface::setLocations()`` it should be do through module configuration
+- `phpspec/phpspec` test suite. Tests were made with `phpunit/phpunit`
+- support for php <= 8.1
+
 ## [v2.0.0] - 2023-02-22
 ### Added
 - support for PHP 8.x
@@ -70,7 +85,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/slickframework/template/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/slickframework/template/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/slickframework/template/compare/v2.0.0...v3.0.0
+[v2.0.0]: https://github.com/slickframework/template/compare/v1.3.0...v2.0.0
 [v1.3.0]: https://github.com/slickframework/template/compare/v1.2.5...v1.3.0
 [v1.2.5]: https://github.com/slickframework/template/compare/v1.2.4...v1.2.5
 [v1.2.4]: https://github.com/slickframework/template/compare/v1.2.3...v1.2.4

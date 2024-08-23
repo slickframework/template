@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Error</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <meta name="description" content="Slick template error information">
+
+    <link href="https://unpkg.com/@fortawesome/fontawesome-free@5.13.0/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/sandstone/bulmaswatch.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-highlight/prism-line-highlight.css" rel="stylesheet" />
+
+    <style>
+        .message .message-body {
+            padding: 1.1em 1.25em 1.25em 4.5em;
+            position: relative;
+        }
+
+        .message .message-body .icon {
+            position: absolute;
+            top: 0.7em;
+            left: 0.35em;
+        }
+    </style>
+
+</head>
+<body class="">
+    <section>
+        <nav class="navbar is-danger">
+            <div class="container is-flex is-align-items-center">
+                <div class="navbar-brand is-flex-grow-1">
+                    <h1 class="is-size-3 has-text-weight-light">{{ inspector.exceptionsPath|join(" > ") }}</h1>
+                </div>
+                <p class="is-size-4 has-text-weight-light">{{ inspector.statusCode }} {{ inspector.httpError }}</p>
+            </div>
+        </nav>
+    </section>
+    <section>
+        {% block hero %}
+
+        {% endblock %}
+    </section>
+
+    <main class="container">
+        {% block main %}
+
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="content">
+            <div class="container">
+                <small>Powered by </small><strong>Slick</strong><br />
+                <small>Ver.: {{ handler.version }}</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@v1.x/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("content-tab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " is-active";
+        }
+    </script>
+</body>
+</html>
