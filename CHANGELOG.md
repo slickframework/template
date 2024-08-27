@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v3.1.1] - 2024-08-27
+### Added
+- `generateWords()`,  `generateSentences()` and `generateParagraphs()` functions to the `Slick`
+  template extension
+- `path()` function to generate links between pages
+- `SlickApp::settings()` to retrieve the application `SlickConfigurationInterface`
+### Fixed
+- Slick module enable/disable behavior
+
 ## [v3.1.0] - 2024-08-27
 ### Added
 - `base.html.twig` as a base template that is aware of theme configuration
@@ -92,7 +101,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/slickframework/template/compare/v3.1.0...HEAD
+[Unreleased]: https://github.com/slickframework/template/compare/v3.1.1...HEAD
+[v3.1.1]: https://github.com/slickframework/template/compare/v3.1.0...v3.1.1
 [v3.1.0]: https://github.com/slickframework/template/compare/v3.0.0...v3.1.0
 [v3.0.0]: https://github.com/slickframework/template/compare/v2.0.0...v3.0.0
 [v2.0.0]: https://github.com/slickframework/template/compare/v1.3.0...v2.0.0

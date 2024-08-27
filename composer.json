@@ -5,7 +5,7 @@
   "homepage": "https://github.com/slickframework/template",
   "keywords": ["slick-php", "template", "twig", "slick-php-module"],
   "minimum-stability": "dev",
-  "version": "v3.1.0",
+  "version": "v3.1.1",
   "authors": [
     {
       "name": "Filipe Silva",
