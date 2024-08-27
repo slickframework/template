@@ -24,6 +24,25 @@ use function Slick\ModuleApi\mergeArrays;
  */
 final class TemplateModule extends AbstractModule implements WebModuleInterface
 {
+    const CONFIG_MODULES_TEMPLATE_PHP = '/config/modules/template.php';
+    private static string $defaultSettings = <<<EOS
+<?php
+
+/**
+ * This file is part of template module
+ */
+
+return [
+    'paths' => [dirname(__DIR__, 2) . '/templates'],
+    'options' => [
+        'debug' => isset(\$_ENV["APP_ENV"]) ? \$_ENV["APP_ENV"] == 'develop' : false,
+    ],
+    'framework' => 'boostrap',
+    'theme' => 'lumen'
+];
+ 
+EOS;
+
     public function services(): array
     {
         $servicesFile = dirname(__DIR__) . '/config/services.php';
@@ -40,7 +59,13 @@ final class TemplateModule extends AbstractModule implements WebModuleInterface
     public function settings(Dotenv $dotenv): array
     {
         $defaultSettings = importSettingsFile(dirname(__DIR__) . '/config/settings.php');
-        $userSettings = ['template' => importSettingsFile(APP_ROOT . '/config/modules/template.php')];
+        $templateConfigPath = APP_ROOT . self::CONFIG_MODULES_TEMPLATE_PHP;
+
+        if (!file_exists($templateConfigPath)) {
+            return $defaultSettings;
+        }
+
+        $userSettings = ['template' => importSettingsFile($templateConfigPath)];
         $userSettings['template']['paths'] = array_merge(
             $userSettings['template']['paths'],
             $defaultSettings['template']['paths']
@@ -65,10 +90,27 @@ final class TemplateModule extends AbstractModule implements WebModuleInterface
     public function onEnable(array $context = []): void
     {
         $path = APP_ROOT . '/templates';
-        if (file_exists($path)) {
+        if (!file_exists($path)) {
+            mkdir($path, 0755, true);
+        }
+
+        $settingsFile = APP_ROOT . self::CONFIG_MODULES_TEMPLATE_PHP;
+        if (file_exists($settingsFile)) {
             return;
         }
 
-        mkdir($path, 0755, true);
+        file_put_contents($settingsFile, self::$defaultSettings);
+    }
+
+    public function onDisable(array $context = []): void
+    {
+        if (!$context['purge']) {
+            return;
+        }
+
+        $settingsFile = APP_ROOT . self::CONFIG_MODULES_TEMPLATE_PHP;
+        if (file_exists($settingsFile)) {
+            unlink($settingsFile);
+        }
     }
 }

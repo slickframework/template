@@ -17,6 +17,7 @@ use Slick\Configuration\Driver\Environment;
 use Slick\WebStack\Domain\Security\AuthorizationCheckerInterface;
 use Slick\WebStack\Domain\Security\SecurityAuthenticatorInterface;
 use Slick\WebStack\Domain\Security\UserInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * SlickApp
@@ -38,6 +39,7 @@ class SlickApp
         private readonly ?SecurityAuthenticatorInterface $authenticator = null,
         private readonly ?ServerRequestInterface $request = null,
         private readonly ?ConfigurationInterface $settings = null,
+        private readonly ?UrlGeneratorInterface $generator = null
     ) {
     }
 
@@ -71,5 +73,10 @@ class SlickApp
             return new Environment();
         }
         return $this->settings;
+    }
+
+    public function generator(): ?UrlGeneratorInterface
+    {
+        return $this->generator;
     }
 }

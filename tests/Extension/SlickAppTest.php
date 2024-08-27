@@ -10,6 +10,8 @@ namespace Tests\Slick\Template\Extension;
 
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\ServerRequestInterface;
+use Slick\Configuration\ConfigurationInterface;
+use Slick\Configuration\Driver\Environment;
 use Slick\Template\Extension\SlickApp;
 use PHPUnit\Framework\TestCase;
 use Slick\WebStack\Domain\Security\AuthorizationCheckerInterface;
@@ -39,5 +41,21 @@ class SlickAppTest extends TestCase
         $request = $this->prophesize(ServerRequestInterface::class)->reveal();
         $app = new SlickApp(request: $request);
         $this->assertSame($request, $app->request());
+    }
+
+    public function testMissingUser(): void
+    {
+        $app = new SlickApp();
+        $this->assertNull($app->user());
+    }
+
+    public function testSettings(): void
+    {
+        $request = $this->prophesize(ConfigurationInterface::class)->reveal();
+        $app = new SlickApp(settings: $request);
+        $this->assertSame($request, $app->settings());
+
+        $app = new SlickApp();
+        $this->assertInstanceOf(Environment::class, $app->settings());
     }
 }
