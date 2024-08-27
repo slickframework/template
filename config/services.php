@@ -17,6 +17,7 @@ use Slick\Template\Extension\Slick;
 use Slick\Template\Extension\SlickApp;
 use Slick\Template\TemplateEngineInterface;
 use Twig\Environment;
+use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
 $services = [];
@@ -38,9 +39,15 @@ $services['template.engine'] = function (Container $container) {
     foreach ($namespaced as $name => $path) {
         $loader->addPath($path, $name);
     }
-    $templateEngine = new TwigTemplateEngine(new Environment($loader, $settings->get('template.options', [])));
+    $options = $settings->get('template.options', []);
+    $templateEngine = new TwigTemplateEngine(new Environment($loader, $options));
     $slick = new Slick($container->make(SlickApp::class));
     $slick->update($templateEngine);
+
+    if (isset($options['debug']) && $options['debug']) {
+        $templateEngine->sourceEngine()->addExtension(new DebugExtension());
+    }
+
     foreach ($settings->get('template.extensions', []) as $ext) {
         if ($ext instanceof EngineExtensionInterface && $ext->appliesTo($templateEngine)) {
             $ext->update($templateEngine);

@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="{% block html_class %}{% endblock %}">
 <head>
     {% block html_head %}
     <title>{% block html_title %}Slick web page{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
-    <meta name="description" content="{% block html_title %}Slick template using {{ app.settings.get('template.framework') }} framework{% endblock %}">
+    <meta name="description" content="{% block html_head_description %}Slick template using {{ app.settings.get('template.framework') }} framework{% endblock %}">
 
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" >
 
     {% block html_head_stylesheets %}
         <link href="https://unpkg.com/@fortawesome/fontawesome-free@5/css/all.css" rel="stylesheet" />
-        {% set theme =  app.settings.get('template.theme', 'sandstone') %}
-        {% if app.settings.get('template.framework', 'bulma') === "bulma" %}
+        {% set theme = app.settings.get('template.theme', 'sandstone') %}
+        {% if app.settings.get('template.framework', 'bulma') is same as("bulma") %}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1/css/bulma.min.css" />
             <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/{{ theme }}/bulmaswatch.min.css" />
             <link href="https://unpkg.com/@fortawesome/fontawesome-free@5.13.0/css/all.css" rel="stylesheet" />
@@ -42,7 +42,7 @@
 {% endblock %}
 
 {% block body_closure %}
-    {% if app.settings.get('template.framework', 'bulma') === "bulma" %}
+    {% if app.settings.get('template.framework', 'bulma') is same as("bulma") %}
         <script>
             {{ include("assets/bulma.js")|raw }}
         </script>

@@ -48,12 +48,30 @@ final class TwigSlickExtension extends AbstractExtension implements GlobalsInter
     {
         return [
             new TwigFunction('poweredBySlick', [$this, 'poweredBySlick'], ['is_safe' => ['html']]),
+            new TwigFunction('path', [$this, 'path']),
         ];
     }
 
     public function poweredBySlick(): string
     {
         return '<small>Powered by </small><strong>Slick</strong>';
+    }
+
+    /**
+     * Generates a path for the given route name and options.
+     *
+     * @param string $name The name of the route.
+     * @param array<string, mixed> $options The options for the route.
+     *
+     * @return string The generated path.
+     */
+    public function path(string $name, array $options = []): string
+    {
+        $urlGenerator = $this->app->generator();
+        if (!$urlGenerator) {
+            return '/_missing_router';
+        }
+        return $urlGenerator->generate($name, $options);
     }
 
     /**

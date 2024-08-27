@@ -23,7 +23,7 @@ $ composer require slick/template
 ```
 
 ## Usage
-Please read `slick/orm` documentation at [https://www.slick-framework.com/modules/orm.html](https://www.slick-framework.com/modules/template.html)
+Please read `slick/template` documentation at [https://www.slick-framework.com/modules/template.html](https://www.slick-framework.com/modules/template.html)
 
 ## Change log
 

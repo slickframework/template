@@ -28,4 +28,15 @@ class TwigTextExtensionTest extends TestCase
         $filter = $ext->getFilters()[1];
         $this->assertEquals("This is a\ntest", $filter->getCallable()("This is a test", 9));
     }
+
+    public function testIpsumGenerate(): void
+    {
+        $ext = new TwigTextExtension();
+        $words = $ext->getFunctions()[0];
+        $sentences = $ext->getFunctions()[1];
+        $paragraphs = $ext->getFunctions()[2];
+        $this->assertMatchesRegularExpression('/\w\s\w/i', $words->getCallable()(2));
+        $this->assertMatchesRegularExpression('/\w+/i', $sentences->getCallable()(2));
+        $this->assertMatchesRegularExpression('/[\w.]+/i', $paragraphs->getCallable()(2));
+    }
 }

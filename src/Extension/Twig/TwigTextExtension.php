@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Slick\Template\Extension\Twig;
 
+use Slick\Template\Extension\IpsumLorenGenerator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * TwigTextExtension
@@ -30,8 +32,53 @@ final class TwigTextExtension extends AbstractExtension
     {
         return [
             new TwigFilter('truncate', [$this, 'truncate']),
-            new TwigFilter('wordwrap', [$this, 'wordwrap']),
+            new TwigFilter('wordwrap', [$this, 'wordwrap'])
         ];
+    }
+
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('generateWords', [$this, 'generateWords']),
+            new TwigFunction('generateSentences', [$this, 'generateSentences']),
+            new TwigFunction('generateParagraphs', [$this, 'generateParagraphs']),
+        ];
+    }
+
+    /**
+     * Generate random words using IpsumLorenGenerator.
+     *
+     * @param int $count The number of words to generate. Default is 1.
+     * @return string The generated words.
+     */
+    public function generateWords(int $count = 1): string
+    {
+        $generator = new IpsumLorenGenerator();
+        return $generator->words($count);
+    }
+
+    /**
+     * Generates a specified number of sentences using IpsumLorenGenerator.
+     *
+     * @param int $count The number of sentences to generate (default is 1).
+     * @return string The generated sentences.
+     */
+    public function generateSentences(int $count = 1): string
+    {
+        $generator = new IpsumLorenGenerator();
+        return $generator->sentences($count);
+    }
+
+    /**
+     * Generates a specified number of paragraphs using IpsumLorenGenerator.
+     *
+     * @param int $count The number of paragraphs to generate (default is 1).
+     * @return string The generated paragraphs.
+     */
+    public function generateParagraphs(int $count = 1): string
+    {
+        $generator = new IpsumLorenGenerator();
+        return $generator->paragraphs($count);
     }
 
     /**
@@ -62,7 +109,7 @@ final class TwigTextExtension extends AbstractExtension
      */
     public function wordwrap(string $value, int $len = 75, string $break = "\n"): string
     {
-        return wordwrap($value, $len, $break, false);
+        return wordwrap($value, $len, $break);
     }
 
     /**

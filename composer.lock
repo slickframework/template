@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4857a07525d6f32e257fe6f1f4554ad2",
+    "content-hash": "141b0cb3486a18d99c4aa596f6b65539",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -2149,12 +2149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7e7808d56ed33f5e1eb03070a16285dfad9444e6"
+                "reference": "f9b7e815b08b5d4072fca07ed9c90c402b9240d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7e7808d56ed33f5e1eb03070a16285dfad9444e6",
-                "reference": "7e7808d56ed33f5e1eb03070a16285dfad9444e6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f9b7e815b08b5d4072fca07ed9c90c402b9240d9",
+                "reference": "f9b7e815b08b5d4072fca07ed9c90c402b9240d9",
                 "shasum": ""
             },
             "require": {
@@ -2221,7 +2221,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-26T15:47:48+00:00"
+            "time": "2024-08-27T14:10:32+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4059,12 +4059,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a66e75d9c1880e6cc7ebc39900683cf66b09263b"
+                "reference": "49bef4446db647c244161f03403b9abb6e9a3041"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a66e75d9c1880e6cc7ebc39900683cf66b09263b",
-                "reference": "a66e75d9c1880e6cc7ebc39900683cf66b09263b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/49bef4446db647c244161f03403b9abb6e9a3041",
+                "reference": "49bef4446db647c244161f03403b9abb6e9a3041",
                 "shasum": ""
             },
             "require": {
@@ -4107,13 +4107,9 @@
                 {
                     "url": "https://github.com/phpstan",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2023-12-20T14:54:02+00:00"
+            "time": "2024-08-27T11:47:48+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -5825,12 +5821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "2bb49f1d365f34575758fbcb7c5358ccd8f26ae4"
+                "reference": "602f8dea03a1aac8c6d774b9393e19b7e7596234"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/2bb49f1d365f34575758fbcb7c5358ccd8f26ae4",
-                "reference": "2bb49f1d365f34575758fbcb7c5358ccd8f26ae4",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/602f8dea03a1aac8c6d774b9393e19b7e7596234",
+                "reference": "602f8dea03a1aac8c6d774b9393e19b7e7596234",
                 "shasum": ""
             },
             "require": {
@@ -5897,7 +5893,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T06:44:51+00:00"
+            "time": "2024-08-27T12:53:20+00:00"
         },
         {
             "name": "symfony/filesystem",
