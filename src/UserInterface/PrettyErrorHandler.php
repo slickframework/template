@@ -14,7 +14,10 @@ namespace Slick\Template\UserInterface;
 use Slick\ErrorHandler\Exception\ExceptionInspector;
 use Slick\ErrorHandler\Handler\HandlerInterface;
 use Slick\ErrorHandler\RunnerInterface;
+use Slick\Template\Engine\MarkdownLoader;
 use Slick\Template\Engine\TwigTemplateEngine;
+use Slick\Template\Extension\Slick;
+use Slick\Template\Extension\SlickApp;
 use Slick\Template\TemplateEngineInterface;
 use Throwable;
 use Twig\Environment;
@@ -44,14 +47,9 @@ final class PrettyErrorHandler implements HandlerInterface
         $twig = new Environment($loader, ['cache' => false, 'debug' => true]);
         $twig->addExtension(new DebugExtension());
         $twig->addExtension(new MarkdownExtension());
-        $twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
-            public function load($class) {
-                if (MarkdownRuntime::class === $class) {
-                    return new MarkdownRuntime(new DefaultMarkdown());
-                }
-            }
-        });
+        $twig->addRuntimeLoader(new MarkdownLoader());
         $templateEngine = new TwigTemplateEngine($twig);
+        (new Slick(new SlickApp()))->update($templateEngine);
 
         return new static($templateEngine);
     }
@@ -73,17 +71,5 @@ final class PrettyErrorHandler implements HandlerInterface
         $line = $lines[$key];
         $parts = explode(":", $line);
         return trim(end($parts));
-    }
-
-
-    public function version(): string
-    {
-        $composerFile = dirname(__DIR__, 3) . '/webstack/composer.json';
-        $file = is_file($composerFile)
-            ? $composerFile
-            : dirname(dirname(__DIR__)) . '/vendor/slick/webstack/composer.json';
-
-        $composer = json_decode(file_get_contents($file));
-        return $composer->version;
     }
 }

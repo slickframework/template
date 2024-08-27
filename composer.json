@@ -26,7 +26,9 @@
   "require": {
     "php": ">=8.2",
     "league/commonmark": "^2.6@dev",
-    "slick/error-handler": "^0.3.0@dev",
+    "slick/configuration": "^2.2@dev",
+    "slick/error-handler": "dev-main",
+    "slick/http": "^3.1@dev",
     "slick/module-api": "dev-main",
     "twig/markdown-extra": "^2|3.x",
     "twig/twig": "^2.15.0|3.x-dev"
@@ -37,6 +39,7 @@
     "phpspec/prophecy-phpunit": "^2.0@dev",
     "phpstan/phpstan": "2.0.x-dev",
     "phpunit/phpunit": "^11.4@dev",
+    "slick/webstack": "^2",
     "squizlabs/php_codesniffer": "4.0.x-dev"
   },
   "extra": {

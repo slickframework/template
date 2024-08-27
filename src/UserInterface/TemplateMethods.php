@@ -26,7 +26,7 @@ trait TemplateMethods
     protected ?TemplateEngineInterface $templateEngine = null;
 
     #[Autowire]
-    public function withTemplate(TemplateEngineInterface $templateEngine): void
+    public function withTemplateEngine(TemplateEngineInterface $templateEngine): void
     {
         $this->templateEngine = $templateEngine;
     }
