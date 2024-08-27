@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v3.1.0] - 2024-08-27
+### Added
+- `base.html.twig` as a base template that is aware of theme configuration
+- Slick template extension: adds access to current user, request and settigns
+
+### Fixed
+- Markdown plugin on twig
 
 ## [v3.0.0] - 2024-08-23
 ### Added
@@ -85,7 +92,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/slickframework/template/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/slickframework/template/compare/v3.1.0...HEAD
+[v3.1.0]: https://github.com/slickframework/template/compare/v3.0.0...v3.1.0
 [v3.0.0]: https://github.com/slickframework/template/compare/v2.0.0...v3.0.0
 [v2.0.0]: https://github.com/slickframework/template/compare/v1.3.0...v2.0.0
 [v1.3.0]: https://github.com/slickframework/template/compare/v1.2.5...v1.3.0

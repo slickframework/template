@@ -14,6 +14,7 @@ namespace Slick\Template\Extension;
 use Slick\Template\Engine\TwigTemplateEngine;
 use Slick\Template\Extension\Twig\TwigTextExtension;
 use Slick\Template\TemplateEngineInterface;
+use Twig\Extension\ExtensionInterface;
 
 /**
  * TwigEngineMethods
@@ -29,6 +30,7 @@ trait TwigEngineMethods
     public function update(TemplateEngineInterface $engine): void
     {
         if ($engine instanceof TwigTemplateEngine) {
+            /** @var ExtensionInterface $class */
             $class = $this->twigExtensionName;
             $engine->sourceEngine()->addExtension(new $class());
         }

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Slick\Template\Extension;
 
+use Slick\Template\Engine\TwigTemplateEngine;
 use Slick\Template\EngineExtensionInterface;
 use Slick\Template\Extension\Twig\TwigSlickExtension;
 use Slick\Template\TemplateEngineInterface;
@@ -33,7 +34,7 @@ final class Slick implements EngineExtensionInterface
 
     public function update(TemplateEngineInterface $engine): void
     {
-        if ($this->appliesTo($engine)) {
+        if ($engine instanceof TwigTemplateEngine) {
             $engine->sourceEngine()->addExtension(new TwigSlickExtension($this->app));
         }
     }
