@@ -5,7 +5,7 @@
   "homepage": "https://github.com/slickframework/template",
   "keywords": ["slick-php", "template", "twig", "slick-php-module"],
   "minimum-stability": "dev",
-  "version": "v3.0.0",
+  "version": "v3.1.0",
   "authors": [
     {
       "name": "Filipe Silva",
@@ -25,7 +25,10 @@
   },
   "require": {
     "php": ">=8.2",
-    "slick/error-handler": "^0.3.0@dev",
+    "league/commonmark": "^2.6@dev",
+    "slick/configuration": "^2.2@dev",
+    "slick/error-handler": "dev-main",
+    "slick/http": "^3.1@dev",
     "slick/module-api": "dev-main",
     "twig/markdown-extra": "^2|3.x",
     "twig/twig": "^2.15.0|3.x-dev"
@@ -36,12 +39,13 @@
     "phpspec/prophecy-phpunit": "^2.0@dev",
     "phpstan/phpstan": "2.0.x-dev",
     "phpunit/phpunit": "^11.4@dev",
+    "slick/webstack": "^2",
     "squizlabs/php_codesniffer": "4.0.x-dev"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "2.1-dev",
-      "dev-develop": "2.x-dev"
+      "dev-master": "3.1-dev",
+      "dev-develop": "3.x-dev"
     }
   },
   "scripts": {

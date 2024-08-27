@@ -9,6 +9,8 @@
 
 namespace Config;
 
+use Slick\Template\Extension\Text;
+
 $settings = [
     'template' => [
         'paths' => [
@@ -22,7 +24,10 @@ $settings = [
             'optimizations' => -1
         ],
         'framework' => 'bulma', //bulma or boostrap
-        'theme' => 'sandstone'
+        'theme' => 'sandstone',
+        'extensions' => [
+            new Text()
+        ]
     ]
 ];
 
