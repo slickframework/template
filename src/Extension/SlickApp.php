@@ -25,6 +25,14 @@ use Slick\WebStack\Domain\Security\UserInterface;
  */
 class SlickApp
 {
+    /**
+     * Creates a SlickApp
+     *
+     * @param AuthorizationCheckerInterface<UserInterface>|null $auth
+     * @param SecurityAuthenticatorInterface|null $authenticator
+     * @param ServerRequestInterface|null $request
+     * @param ConfigurationInterface|null $settings
+     */
     public function __construct(
         private readonly ?AuthorizationCheckerInterface $auth = null,
         private readonly ?SecurityAuthenticatorInterface $authenticator = null,
@@ -40,8 +48,11 @@ class SlickApp
      */
     public function user(): ?UserInterface
     {
-        $isUserAuthenticated = $this->authenticator->enabled() && $this->auth instanceof AuthorizationCheckerInterface;
-        return $isUserAuthenticated ? $this->auth->authenticatedUser() : null;
+        $enabled = $this->authenticator && $this->authenticator->enabled();
+        if ($enabled && $this->auth instanceof AuthorizationCheckerInterface) {
+            return $this->auth->authenticatedUser();
+        }
+        return null;
     }
 
     /**

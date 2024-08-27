@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad2393c7f08bfaa3f40a5c011998569",
+    "content-hash": "4857a07525d6f32e257fe6f1f4554ad2",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -2149,12 +2149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "86330fb9bcd101780d9b470339af5e92b4120e79"
+                "reference": "7e7808d56ed33f5e1eb03070a16285dfad9444e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/86330fb9bcd101780d9b470339af5e92b4120e79",
-                "reference": "86330fb9bcd101780d9b470339af5e92b4120e79",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7e7808d56ed33f5e1eb03070a16285dfad9444e6",
+                "reference": "7e7808d56ed33f5e1eb03070a16285dfad9444e6",
                 "shasum": ""
             },
             "require": {
@@ -2221,7 +2221,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-23T07:26:18+00:00"
+            "time": "2024-08-26T15:47:48+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2462,12 +2462,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "9a0a968301a984552e7c6accf66a382bb0bc21ff"
+                "reference": "2d861b05aa2553bd91bb672fe1b855a6ab9db5fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/9a0a968301a984552e7c6accf66a382bb0bc21ff",
-                "reference": "9a0a968301a984552e7c6accf66a382bb0bc21ff",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/2d861b05aa2553bd91bb672fe1b855a6ab9db5fb",
+                "reference": "2d861b05aa2553bd91bb672fe1b855a6ab9db5fb",
                 "shasum": ""
             },
             "require": {
@@ -2540,7 +2540,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:18:05+00:00"
+            "time": "2024-08-27T07:39:19+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -3220,12 +3220,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "e0cd5d576c5ba031c20a1204fc4054fe323f2f92"
+                "reference": "3327c29d3799da2eb321032afc73d01b6aa51cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/e0cd5d576c5ba031c20a1204fc4054fe323f2f92",
-                "reference": "e0cd5d576c5ba031c20a1204fc4054fe323f2f92",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/3327c29d3799da2eb321032afc73d01b6aa51cb8",
+                "reference": "3327c29d3799da2eb321032afc73d01b6aa51cb8",
                 "shasum": ""
             },
             "require": {
@@ -3314,7 +3314,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-22T14:13:28+00:00"
+            "time": "2024-08-27T07:51:08+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3885,12 +3885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "ae18dbc63d65d22032e8b798c2fb56f569e6f09c"
+                "reference": "e3810e5e638cd91f6f6d82059c60ad85f2b3ffb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/ae18dbc63d65d22032e8b798c2fb56f569e6f09c",
-                "reference": "ae18dbc63d65d22032e8b798c2fb56f569e6f09c",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/e3810e5e638cd91f6f6d82059c60ad85f2b3ffb1",
+                "reference": "e3810e5e638cd91f6f6d82059c60ad85f2b3ffb1",
                 "shasum": ""
             },
             "require": {
@@ -3901,6 +3901,7 @@
                 "sebastian/recursion-context": "^3.0 || ^4.0 || ^5.0 || ^6.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.40",
                 "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpstan/phpstan": "^1.9",
                 "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0"
@@ -3947,7 +3948,7 @@
                 "issues": "https://github.com/phpspec/prophecy/issues",
                 "source": "https://github.com/phpspec/prophecy/tree/master"
             },
-            "time": "2024-08-21T16:44:27+00:00"
+            "time": "2024-08-27T07:52:54+00:00"
         },
         {
             "name": "phpspec/prophecy-phpunit",
@@ -4195,16 +4196,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "dev-main",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "631d53598cec6fc96ff3a1696b1d487d76cc4db2"
+                "reference": "118cfaaa8bc5aef3287bf315b6060b1174754af6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/631d53598cec6fc96ff3a1696b1d487d76cc4db2",
-                "reference": "631d53598cec6fc96ff3a1696b1d487d76cc4db2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/118cfaaa8bc5aef3287bf315b6060b1174754af6",
+                "reference": "118cfaaa8bc5aef3287bf315b6060b1174754af6",
                 "shasum": ""
             },
             "require": {
@@ -4213,7 +4214,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^11.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4245,7 +4245,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues",
                 "security": "https://github.com/sebastianbergmann/php-file-iterator/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/main"
+                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/5.1.0"
             },
             "funding": [
                 {
@@ -4253,7 +4253,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-13T09:33:00+00:00"
+            "time": "2024-08-27T05:02:59+00:00"
         },
         {
             "name": "phpunit/php-invoker",
@@ -4448,12 +4448,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "93961d3431feed2da8f351100fa666a08a5ca9b5"
+                "reference": "31b72d9f7dfeea0b8a192c709446557a76572960"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/93961d3431feed2da8f351100fa666a08a5ca9b5",
-                "reference": "93961d3431feed2da8f351100fa666a08a5ca9b5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/31b72d9f7dfeea0b8a192c709446557a76572960",
+                "reference": "31b72d9f7dfeea0b8a192c709446557a76572960",
                 "shasum": ""
             },
             "require": {
@@ -4468,7 +4468,7 @@
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.2",
                 "phpunit/php-code-coverage": "^11.0.6",
-                "phpunit/php-file-iterator": "^5.0.1",
+                "phpunit/php-file-iterator": "^5.1.0",
                 "phpunit/php-invoker": "^5.0.1",
                 "phpunit/php-text-template": "^4.0.1",
                 "phpunit/php-timer": "^7.0.1",
@@ -4541,7 +4541,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-22T09:47:58+00:00"
+            "time": "2024-08-27T09:31:23+00:00"
         },
         {
             "name": "psr/cache",
@@ -5825,12 +5825,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "0fa95ed2e8bcba567c0c31db630d3a1ed7afd0f4"
+                "reference": "2bb49f1d365f34575758fbcb7c5358ccd8f26ae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/0fa95ed2e8bcba567c0c31db630d3a1ed7afd0f4",
-                "reference": "0fa95ed2e8bcba567c0c31db630d3a1ed7afd0f4",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/2bb49f1d365f34575758fbcb7c5358ccd8f26ae4",
+                "reference": "2bb49f1d365f34575758fbcb7c5358ccd8f26ae4",
                 "shasum": ""
             },
             "require": {
@@ -5897,7 +5897,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-22T07:57:31+00:00"
+            "time": "2024-08-27T06:44:51+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -5971,12 +5971,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "10517c1d0b8bd50f7bbfa38345179aaae1dd3b5e"
+                "reference": "f02204561448a83bce4cf5e55590cbe968ebb349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/10517c1d0b8bd50f7bbfa38345179aaae1dd3b5e",
-                "reference": "10517c1d0b8bd50f7bbfa38345179aaae1dd3b5e",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/f02204561448a83bce4cf5e55590cbe968ebb349",
+                "reference": "f02204561448a83bce4cf5e55590cbe968ebb349",
                 "shasum": ""
             },
             "require": {
@@ -6044,7 +6044,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-12T08:31:17+00:00"
+            "time": "2024-08-27T06:39:40+00:00"
         },
         {
             "name": "symfony/var-exporter",
