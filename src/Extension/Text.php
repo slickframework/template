@@ -11,10 +11,8 @@ declare(strict_types=1);
 
 namespace Slick\Template\Extension;
 
-use Slick\Template\Engine\TwigTemplateEngine;
 use Slick\Template\EngineExtensionInterface;
 use Slick\Template\Extension\Twig\TwigTextExtension;
-use Slick\Template\TemplateEngineInterface;
 
 /**
  * Text

@@ -22,8 +22,7 @@ use Twig\Loader\FilesystemLoader;
 
 $services = [];
 
-$services[TemplateEngineInterface::class] = '@template.engine';
-$services['template.engine'] = function (Container $container) {
+$services[FilesystemLoader::class] = function (Container $container): FilesystemLoader {
     $settings = $container->get(ConfigurationInterface::class);
     $paths = [];
     $namespaced = [];
@@ -39,8 +38,23 @@ $services['template.engine'] = function (Container $container) {
     foreach ($namespaced as $name => $path) {
         $loader->addPath($path, $name);
     }
+    return $loader;
+};
+
+$services[Environment::class] = function (Container $container): Environment {
+    $settings = $container->get(ConfigurationInterface::class);
+    $loader  = $container->get(FilesystemLoader::class);
     $options = $settings->get('template.options', []);
-    $templateEngine = new TwigTemplateEngine(new Environment($loader, $options));
+    return new Environment($loader, $options);
+};
+
+$services[TemplateEngineInterface::class] = '@template.engine';
+$services['template.engine'] = function (Container $container) {
+    $settings = $container->get(ConfigurationInterface::class);
+    $options = $settings->get('template.options', []);
+
+    $templateEngine = new TwigTemplateEngine($container->get(Environment::class));
+
     $slick = new Slick($container->make(SlickApp::class));
     $slick->update($templateEngine);
 
@@ -49,6 +63,7 @@ $services['template.engine'] = function (Container $container) {
     }
 
     foreach ($settings->get('template.extensions', []) as $ext) {
+        $ext = is_string($ext) ? $container->get($ext) : $ext;
         if ($ext instanceof EngineExtensionInterface && $ext->appliesTo($templateEngine)) {
             $ext->update($templateEngine);
         }
