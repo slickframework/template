@@ -26,7 +26,7 @@ $settings = [
         'framework' => 'bulma', //bulma or boostrap
         'theme' => 'sandstone',
         'extensions' => [
-            new Text()
+            Text::class
         ]
     ]
 ];

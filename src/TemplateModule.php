@@ -37,8 +37,8 @@ return [
     'options' => [
         'debug' => isset(\$_ENV["APP_ENV"]) ? \$_ENV["APP_ENV"] == 'develop' : false,
     ],
-    'framework' => 'boostrap',
-    'theme' => 'lumen'
+    'framework' => 'bulma',
+    'theme' => 'sandstone'
 ];
  
 EOS;
