@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v3.1.2] - 2024-08-29
+### Added
+- Now is possible to pass an template engine extension class name in the list of extensions
+  it will use the dependency container to create the extension.
+### Changed
+- the default template framework and theme changed to `bulma` and `sandstone` respectively
+
 ## [v3.1.1] - 2024-08-27
 ### Added
 - `generateWords()`,  `generateSentences()` and `generateParagraphs()` functions to the `Slick`
@@ -101,7 +108,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/slickframework/template/compare/v3.1.1...HEAD
+[Unreleased]: https://github.com/slickframework/template/compare/v3.1.2...HEAD
+[v3.1.2]: https://github.com/slickframework/template/compare/v3.1.1...v3.1.2
 [v3.1.1]: https://github.com/slickframework/template/compare/v3.1.0...v3.1.1
 [v3.1.0]: https://github.com/slickframework/template/compare/v3.0.0...v3.1.0
 [v3.0.0]: https://github.com/slickframework/template/compare/v2.0.0...v3.0.0

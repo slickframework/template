@@ -246,11 +246,9 @@ final class IpsumLorenGenerator
      */
     private function gauss(float $mean, float $stdDev): int
     {
-        $x = mt_rand() / mt_getrandmax();
-        $y = mt_rand() / mt_getrandmax();
-        $z = sqrt(-2 * log($x)) * cos(2 * pi() * $y);
-
-        return intval($z * $stdDev + $mean);
+        $gaussianXValue = mt_rand() / mt_getrandmax();
+        $gaussianYValue = mt_rand() / mt_getrandmax();
+        return intval((sqrt(-2 * log($gaussianXValue)) * cos(2 * pi() * $gaussianYValue)) * $stdDev + $mean);
     }
 
     /**
@@ -271,8 +269,8 @@ final class IpsumLorenGenerator
             // Only worry about commas on sentences longer than 4 words
             if ($words > 4) {
                 $mean    = log($words, 6);
-                $std_dev = $mean / 6;
-                $commas  = $this->gauss($mean, $std_dev);
+                $stdDev = $mean / 6;
+                $commas  = $this->gauss($mean, $stdDev);
 
                 for ($i = 1; $i <= $commas; $i++) {
                     $word = round($i * $words / ($commas + 1));
