@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "141b0cb3486a18d99c4aa596f6b65539",
+    "content-hash": "48869ee3df7338250ea17e34bb07db5d",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -2149,12 +2149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "f9b7e815b08b5d4072fca07ed9c90c402b9240d9"
+                "reference": "9120e9f3d1f08ced708a9d43ec58b31c300b5ea0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f9b7e815b08b5d4072fca07ed9c90c402b9240d9",
-                "reference": "f9b7e815b08b5d4072fca07ed9c90c402b9240d9",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9120e9f3d1f08ced708a9d43ec58b31c300b5ea0",
+                "reference": "9120e9f3d1f08ced708a9d43ec58b31c300b5ea0",
                 "shasum": ""
             },
             "require": {
@@ -2221,7 +2221,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T14:10:32+00:00"
+            "time": "2024-08-29T14:16:01+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2316,12 +2316,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "7cafee339d355a7a2623180d3817f51265daf8d0"
+                "reference": "63aaeac21d7e775ff9bc9d45021e1745c97521c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/7cafee339d355a7a2623180d3817f51265daf8d0",
-                "reference": "7cafee339d355a7a2623180d3817f51265daf8d0",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/63aaeac21d7e775ff9bc9d45021e1745c97521c4",
+                "reference": "63aaeac21d7e775ff9bc9d45021e1745c97521c4",
                 "shasum": ""
             },
             "require": {
@@ -2372,7 +2372,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/main"
+                "source": "https://github.com/composer/pcre/tree/3.3.1"
             },
             "funding": [
                 {
@@ -2388,7 +2388,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-23T14:08:28+00:00"
+            "time": "2024-08-27T18:44:43+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -2462,17 +2462,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "2d861b05aa2553bd91bb672fe1b855a6ab9db5fb"
+                "reference": "1a882ec96b02eecff790042e2fe6790eb62b57c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/2d861b05aa2553bd91bb672fe1b855a6ab9db5fb",
-                "reference": "2d861b05aa2553bd91bb672fe1b855a6ab9db5fb",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/1a882ec96b02eecff790042e2fe6790eb62b57c0",
+                "reference": "1a882ec96b02eecff790042e2fe6790eb62b57c0",
                 "shasum": ""
             },
             "require": {
                 "doctrine/deprecations": "^1",
-                "php": "^8.1"
+                "php": "^8.1",
+                "symfony/polyfill-php84": "^1.30"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^12",
@@ -2540,7 +2541,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T07:39:19+00:00"
+            "time": "2024-08-28T19:44:12+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -2548,12 +2549,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "a41d81d7d255d4f855606b4a29c792e062acb554"
+                "reference": "d47b6b1f6601cddb2395790ff2a0ce293b59ff50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a41d81d7d255d4f855606b4a29c792e062acb554",
-                "reference": "a41d81d7d255d4f855606b4a29c792e062acb554",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d47b6b1f6601cddb2395790ff2a0ce293b59ff50",
+                "reference": "d47b6b1f6601cddb2395790ff2a0ce293b59ff50",
                 "shasum": ""
             },
             "require": {
@@ -2566,7 +2567,7 @@
                 "doctrine/coding-standard": "12.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.2",
-                "phpstan/phpstan": "1.11.10",
+                "phpstan/phpstan": "1.12.0",
                 "phpstan/phpstan-phpunit": "1.4.0",
                 "phpstan/phpstan-strict-rules": "^1.6",
                 "phpunit/phpunit": "10.5.30",
@@ -2632,7 +2633,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.1.x"
+                "source": "https://github.com/doctrine/dbal/tree/4.2.x"
             },
             "funding": [
                 {
@@ -2648,7 +2649,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-18T07:50:53+00:00"
+            "time": "2024-08-29T09:05:39+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -4008,16 +4009,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.29.1",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4"
+                "reference": "5ceb0e384997db59f38774bf79c2a6134252c08f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fcaefacf2d5c417e928405b71b400d4ce10daaf4",
-                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/5ceb0e384997db59f38774bf79c2a6134252c08f",
+                "reference": "5ceb0e384997db59f38774bf79c2a6134252c08f",
                 "shasum": ""
             },
             "require": {
@@ -4049,9 +4050,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.30.0"
             },
-            "time": "2024-05-31T08:52:43+00:00"
+            "time": "2024-08-29T09:54:52+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -4444,12 +4445,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "31b72d9f7dfeea0b8a192c709446557a76572960"
+                "reference": "11bbe1268a8c3d3c8dda3a1bb4ae44cd61d08f8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/31b72d9f7dfeea0b8a192c709446557a76572960",
-                "reference": "31b72d9f7dfeea0b8a192c709446557a76572960",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/11bbe1268a8c3d3c8dda3a1bb4ae44cd61d08f8b",
+                "reference": "11bbe1268a8c3d3c8dda3a1bb4ae44cd61d08f8b",
                 "shasum": ""
             },
             "require": {
@@ -4537,7 +4538,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T09:31:23+00:00"
+            "time": "2024-08-29T09:26:22+00:00"
         },
         {
             "name": "psr/cache",
@@ -5821,12 +5822,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "602f8dea03a1aac8c6d774b9393e19b7e7596234"
+                "reference": "9f2433d629f56c3417ad474d553d5d3b0682f508"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/602f8dea03a1aac8c6d774b9393e19b7e7596234",
-                "reference": "602f8dea03a1aac8c6d774b9393e19b7e7596234",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/9f2433d629f56c3417ad474d553d5d3b0682f508",
+                "reference": "9f2433d629f56c3417ad474d553d5d3b0682f508",
                 "shasum": ""
             },
             "require": {
@@ -5893,7 +5894,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T12:53:20+00:00"
+            "time": "2024-08-29T08:18:49+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -5962,17 +5963,94 @@
             "time": "2024-07-23T10:47:31+00:00"
         },
         {
+            "name": "symfony/polyfill-php84",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php84.git",
+                "reference": "3e6c61adaa857e2de985983347c583b6ccc2d30e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php84/zipball/3e6c61adaa857e2de985983347c583b6ccc2d30e",
+                "reference": "3e6c61adaa857e2de985983347c583b6ccc2d30e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php84\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.4+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php84/tree/1.x"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-06-20T08:18:00+00:00"
+        },
+        {
             "name": "symfony/routing",
             "version": "7.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "f02204561448a83bce4cf5e55590cbe968ebb349"
+                "reference": "2af9f7bf51cf1d2a9676c4b952312ab9721c0ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/f02204561448a83bce4cf5e55590cbe968ebb349",
-                "reference": "f02204561448a83bce4cf5e55590cbe968ebb349",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/2af9f7bf51cf1d2a9676c4b952312ab9721c0ccd",
+                "reference": "2af9f7bf51cf1d2a9676c4b952312ab9721c0ccd",
                 "shasum": ""
             },
             "require": {
@@ -6040,7 +6118,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T06:39:40+00:00"
+            "time": "2024-08-29T08:18:49+00:00"
         },
         {
             "name": "symfony/var-exporter",
