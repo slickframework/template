@@ -36,6 +36,7 @@ final class TwigSlickExtension extends AbstractExtension implements GlobalsInter
     {
         return [
             "app" => $this->app,
+            "flash" => $this->app->flash(),
             "slickVersion" => $this->version(),
             'poweredBySlick' => new Markup($this->poweredBySlick(), 'UTF-9'),
         ];
@@ -68,10 +69,7 @@ final class TwigSlickExtension extends AbstractExtension implements GlobalsInter
     public function path(string $name, array $options = []): string
     {
         $urlGenerator = $this->app->generator();
-        if (!$urlGenerator) {
-            return '/_missing_router';
-        }
-        return $urlGenerator->generate($name, $options);
+        return $urlGenerator ? $urlGenerator->generate($name, $options) : '/_missing_router';
     }
 
     /**

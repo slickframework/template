@@ -5588,12 +5588,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/web-stack.git",
-                "reference": "e4ffd01c0bbb14983e9d52059ac1986fa23dd5b5"
+                "reference": "5b6498b7dd40d64e08fe9c979690f58a7c456103"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/web-stack/zipball/e4ffd01c0bbb14983e9d52059ac1986fa23dd5b5",
-                "reference": "e4ffd01c0bbb14983e9d52059ac1986fa23dd5b5",
+                "url": "https://api.github.com/repos/slickframework/web-stack/zipball/5b6498b7dd40d64e08fe9c979690f58a7c456103",
+                "reference": "5b6498b7dd40d64e08fe9c979690f58a7c456103",
                 "shasum": ""
             },
             "require": {
@@ -5659,7 +5659,7 @@
                 "issues": "https://github.com/slickframework/web-stack/issues",
                 "source": "https://github.com/slickframework/web-stack/tree/V2"
             },
-            "time": "2024-08-15T20:49:42+00:00"
+            "time": "2024-09-03T11:51:17+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
