@@ -8,32 +8,36 @@
 
 namespace Tests\Slick\Template\Extension;
 
+use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use Slick\Configuration\ConfigurationInterface;
 use Slick\Configuration\Driver\Environment;
 use Slick\Template\Extension\SlickApp;
-use PHPUnit\Framework\TestCase;
-use Slick\WebStack\Domain\Security\AuthorizationCheckerInterface;
 use Slick\WebStack\Domain\Security\SecurityAuthenticatorInterface;
 use Slick\WebStack\Domain\Security\UserInterface;
+use Slick\WebStack\Infrastructure\Http\FlashMessageInterface;
+use Slick\WebStack\Infrastructure\Http\FlashMessageStorage;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SlickAppTest extends TestCase
 {
 
     use ProphecyTrait;
 
-    public function testUser(): void
+    public function testConstruct(): void
     {
         $user = $this->prophesize(UserInterface::class)->reveal();
         $auth = $this->prophesize(SecurityAuthenticatorInterface::class);
+        $flash = $this->prophesize(FlashMessageStorage::class)->reveal();
+        $generator = $this->prophesize(UrlGeneratorInterface::class)->reveal();
         $auth->enabled()->willReturn(true);
+        $auth->user()->willReturn($user);
 
-        $security = $this->prophesize(AuthorizationCheckerInterface::class);
-        $security->authenticatedUser()->willReturn($user);
-
-        $app = new SlickApp($security->reveal(), $auth->reveal());
+        $app = new SlickApp($auth->reveal(), null, null, $generator, $flash);
         $this->assertSame($user, $app->user());
+        $this->assertSame($flash, $app->flash());
+        $this->assertSame($generator, $app->generator());
     }
 
     public function testRequest(): void
