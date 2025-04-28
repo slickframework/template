@@ -1,0 +1,8 @@
+{% set className = {"info": "info", "error": "danger", "warning": "warning", "success": "success"} %}
+
+{% for message in  flash.consume() %}
+    <div class="notification is-{{ className[message.type.value] }} alert alert-{{ className[message.type.value] }} alert-dismissible is-light">
+        <button class="delete btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ message.message }}
+    </div>
+{% endfor %}

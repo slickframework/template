@@ -39,4 +39,11 @@ class TwigTextExtensionTest extends TestCase
         $this->assertMatchesRegularExpression('/\w+/i', $sentences->getCallable()(2));
         $this->assertMatchesRegularExpression('/[\w.]+/i', $paragraphs->getCallable()(2));
     }
+
+    public function testTruncateTextSmallerThanLength(): void
+    {
+        $ext = new TwigTextExtension();
+        $filter = $ext->getFilters()[0];
+        $this->assertEquals("This is a test", $filter->getCallable()("This is a test", 50, '...'));
+    }
 }

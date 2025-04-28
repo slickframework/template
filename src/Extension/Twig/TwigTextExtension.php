@@ -125,7 +125,11 @@ final class TwigTextExtension extends AbstractExtension
             return $length;
         }
 
-        $breakpoint = mb_strpos($value, ' ', $length);
+        $stringLength = mb_strlen($value, 'UTF-8');
+        $breakpoint = $stringLength > $length
+            ? mb_strpos($value, ' ', $length, 'UTF-8')
+            : $stringLength;
+
         $length = false === $breakpoint ? mb_strlen($value) : $breakpoint;
         return (int) $length;
     }

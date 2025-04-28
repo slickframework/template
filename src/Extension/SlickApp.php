@@ -14,9 +14,9 @@ namespace Slick\Template\Extension;
 use Psr\Http\Message\ServerRequestInterface;
 use Slick\Configuration\ConfigurationInterface;
 use Slick\Configuration\Driver\Environment;
-use Slick\WebStack\Domain\Security\AuthorizationCheckerInterface;
 use Slick\WebStack\Domain\Security\SecurityAuthenticatorInterface;
 use Slick\WebStack\Domain\Security\UserInterface;
+use Slick\WebStack\Infrastructure\Http\FlashMessageStorage;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
@@ -29,17 +29,18 @@ class SlickApp
     /**
      * Creates a SlickApp
      *
-     * @param AuthorizationCheckerInterface<UserInterface>|null $auth
      * @param SecurityAuthenticatorInterface|null $authenticator
      * @param ServerRequestInterface|null $request
      * @param ConfigurationInterface|null $settings
+     * @param UrlGeneratorInterface|null $generator
+     * @param FlashMessageStorage|null $flash
      */
     public function __construct(
-        private readonly ?AuthorizationCheckerInterface $auth = null,
         private readonly ?SecurityAuthenticatorInterface $authenticator = null,
         private readonly ?ServerRequestInterface $request = null,
         private readonly ?ConfigurationInterface $settings = null,
-        private readonly ?UrlGeneratorInterface $generator = null
+        private readonly ?UrlGeneratorInterface $generator = null,
+        private readonly ?FlashMessageStorage $flash = null
     ) {
     }
 
@@ -50,9 +51,8 @@ class SlickApp
      */
     public function user(): ?UserInterface
     {
-        $enabled = $this->authenticator && $this->authenticator->enabled();
-        if ($enabled && $this->auth instanceof AuthorizationCheckerInterface) {
-            return $this->auth->authenticatedUser();
+        if ($this->authenticator && $this->authenticator->enabled()) {
+            return $this->authenticator->user();
         }
         return null;
     }
@@ -78,5 +78,10 @@ class SlickApp
     public function generator(): ?UrlGeneratorInterface
     {
         return $this->generator;
+    }
+
+    public function flash(): ?FlashMessageStorage
+    {
+        return $this->flash;
     }
 }

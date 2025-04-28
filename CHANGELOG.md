@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v3.1.3] - 2025-04-28
+### Fixes
+- Truncate filter in twig fails when the string to truncate is smaller than the length
+  you want to truncate.
+
 ## [v3.1.2] - 2024-08-29
 ### Added
 - Now is possible to pass an template engine extension class name in the list of extensions
