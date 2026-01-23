@@ -30,8 +30,8 @@
     "slick/error-handler": "dev-main",
     "slick/http": "^4.1",
     "slick/module-api": "dev-main",
-    "twig/markdown-extra": "^2|3.x",
-    "twig/twig": "^2.15.0|3.x-dev"
+    "twig/markdown-extra": "^2|3.x|^4.x-dev",
+    "twig/twig": "^4.0"
   },
   "require-dev": {
     "phpmd/phpmd": "dev-master",

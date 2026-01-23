@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v3.2.0] - 2026-01-22
+### Changed
+- Updated `twig/twig` to `^4.0`
+- Updated `twig/markdown-extra` to `^4.x-dev` when possible
+- Updated `slick/http` to `^4.1`
+
 ## [v3.1.3] - 2025-04-28
 ### Fixes
 - Truncate filter in twig fails when the string to truncate is smaller than the length
